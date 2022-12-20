@@ -3,7 +3,8 @@
 class BasicBakery
 {
 public: 
-	Bread BakeBread();
+	BasicBakery();
+	Bread* BakeBread();
 	void AddIngredients(int, int, int);
 private:
 	int flour;

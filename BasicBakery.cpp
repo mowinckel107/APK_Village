@@ -6,11 +6,11 @@ BasicBakery::BasicBakery()
 {
 	flour = 500;
 	water = 1000;
-	salt = 5;
+	salt = 1;
 }
 
 //bread requires 500g flour 400ml water and 2g salt
-Bread BasicBakery::BakeBread()
+Bread* BasicBakery::BakeBread()
 {
 	flour -= 500;
 	water -= 400;
@@ -22,6 +22,6 @@ Bread BasicBakery::BakeBread()
 	}
 	else
 	{
-		throw("Insufficient ingridients");
+		throw std::runtime_error("Insufficient ingridients");
 	}
 }

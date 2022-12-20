@@ -3,7 +3,8 @@
 class StrongBakery
 {
 public:
-	Bread BakeBread();
+	StrongBakery();
+	Bread* BakeBread();
 private:
 	int flour;
 	int water;
