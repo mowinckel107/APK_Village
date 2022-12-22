@@ -1,4 +1,5 @@
 #include "Bread.h"
+#include "Oven.h"
 
 class StrongBakery
 {
@@ -9,4 +10,5 @@ private:
 	int flour;
 	int water;
 	int salt;
+	Oven myOven;
 };

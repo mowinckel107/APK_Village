@@ -1,4 +1,4 @@
-SOURCES=main.cpp Smith.cpp Marketplace.cpp MetalBar.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp
+SOURCES=main.cpp Smith.cpp Marketplace.cpp MetalBar.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp 
 OBJECTS=$(addprefix $(BUILD_DIR)/, $(SOURCES:.cpp=.o))
 DEPS=$(addprefix $(BUILD_DIR)/, $(SOURCES:.cpp=.d))
 EXE=prog.exe
