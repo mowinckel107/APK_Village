@@ -6,8 +6,8 @@ class BakerKing
 {
 public:
     BakerKing();
-    void OrderBasicBread();
-    void OrderStrongBread();
+    Bread* OrderBasicBread();
+    Bread* OrderStrongBread();
 private:
     BasicBakery theBasicBakery;
     StrongBakery theStrongBakery;

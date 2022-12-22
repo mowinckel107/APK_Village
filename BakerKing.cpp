@@ -8,30 +8,29 @@ BakerKing::BakerKing()
     theStrongBakery = StrongBakery();
 }
 
-void BakerKing::OrderBasicBread()
+Bread* BakerKing::OrderBasicBread()
 {
     try
     {
-        theBasicBakery.BakeBread();
+        return theBasicBakery.BakeBread();
     }
     catch(const std::runtime_error& e)
     {
-        std::cerr << e.what() << '\n';
-        //throw() //rethrow
+        std::cerr << "BakerKing: " << e.what() << '\n';
+        throw(e); //rethrow
     }
     
     
 }
 
-void BakerKing::OrderStrongBread()
+Bread* BakerKing::OrderStrongBread()
 {
     try
     {
-        theStrongBakery.BakeBread();
+        return theStrongBakery.BakeBread();
     }
     catch(const std::runtime_error& e)
     {
         std::cerr << e.what() << '\n';
-        //throw() //rethrow
     }
 }
