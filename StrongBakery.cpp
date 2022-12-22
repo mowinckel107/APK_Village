@@ -1,5 +1,6 @@
 #include "StrongBakery.h"
 #include <iostream>
+#include <stdexcept>
 
 
 StrongBakery::StrongBakery()
@@ -10,7 +11,7 @@ StrongBakery::StrongBakery()
 }
 
 //bread requires 500g flour 400ml water and 2g salt
-Bread StrongBakery::BakeBread()
+Bread* StrongBakery::BakeBread()
 {
 	if (flour >= 500 && water >= 400 && salt >= 2)
 	{
@@ -22,6 +23,6 @@ Bread StrongBakery::BakeBread()
 	}
 	else
 	{
-		throw("Insufficient ingridients");
+		throw std::runtime_error("Insufficient ingridients");
 	}
 }
