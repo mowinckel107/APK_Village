@@ -1,7 +1,7 @@
 
 #include "Smith.h"
 #include "Marketplace.h"
-
+#include "Innkeeper.h"
 
 
 int main(int argc, char *argv[])
@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
 	// Initialization:
 	Marketplace myMarketplace;
 	Smith mySmith(&myMarketplace);
+    //Tavern t;
+    //Innkeeper i;
 
 
 	// Running the village:
@@ -21,3 +23,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+
