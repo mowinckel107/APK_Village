@@ -27,3 +27,10 @@ Bread* StrongBakery::BakeBread()
 		throw std::runtime_error("Insufficient ingridients");
 	}
 }
+
+void StrongBakery::AddIngredients(int flour, int water, int salt) noexcept
+{
+	this->flour += flour;
+	this->water += water;
+	this->salt += salt;
+}

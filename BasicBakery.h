@@ -7,7 +7,7 @@ public:
 	BasicBakery();
 	Bread* BakeBread();
 	Bread* BakeBreadNoRAII();
-	void AddIngredients(int, int, int);
+	void AddIngredients(int, int, int) noexcept;
 private:
 	int flour;
 	int water;

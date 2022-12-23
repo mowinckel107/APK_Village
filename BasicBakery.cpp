@@ -40,3 +40,10 @@ Bread* BasicBakery::BakeBreadNoRAII()
 	delete d;
 	return b;
 }
+
+void BasicBakery::AddIngredients(int flour, int water, int salt) noexcept
+{
+	this->flour += flour;
+	this->water += water;
+	this->salt += salt;
+}
