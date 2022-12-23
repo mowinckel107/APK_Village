@@ -9,14 +9,12 @@
 
 MetalBar::MetalBar()
 {
-    std::cout << "Metal created" << std::endl;
     data_ = nullptr;
 }
 
 
 MetalBar::~MetalBar()
 {
-    std::cout << "Metal Deleted" << std::endl;
 	delete data_;
 }
 
