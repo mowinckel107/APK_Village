@@ -32,14 +32,33 @@ class FoodVisitor : public boost::static_visitor<>
     }
 };
 
-
-
-
 //compile-time check with visitation
 //Stack-based container (no heap)
 //Assignable, default constructible, (=, <, >) comparable, output streamable, hashable
 
-Tavern::Tavern(/* args */)
+std::string Tavern::getFood(int menuItem)
+{
+    if (menuItem == 0)
+    {
+        std::cout << "checking local food 0 recipe: " << localFood0 << std::endl;
+        return localFood0;
+    }
+    if (menuItem == 1)
+    {
+        std::cout << "checking local food 1 recipe: " << localFood1 << std::endl;
+        return localFood1;        
+    }
+    if (menuItem == 2)
+    {
+        std::cout << "checking local food 2 recipe: " << localFood2 << std::endl;
+        return localFood2;
+    }
+
+
+    //std::cout << mead << std::endl;
+}
+
+void Tavern::variantFood()
 {
     //Forskellen på boost::variant og std::variant er at boost::variant under exception af allokering/kreering vil allokerer heap plads.
     //std::variant må derimod være valueless som resultat
@@ -72,24 +91,8 @@ Tavern::Tavern(/* args */)
     std::visit(FoodVisitor(), undefinedSize);
     std::visit(FoodVisitor(), localFood0);
     std::visit(FoodVisitor(), large);
-
     //LAV EN MED LAMBDA HER
+    std::cout << "lambda visit:" << std::endl;
+    std::visit([] (auto&& param) {std::cout << "Info om localFood via lambda: " << param << std::endl;}, localFood1);
     //Når vi går ud af scope, så bliver alt glemt
-}
-
-Tavern::~Tavern()
-{
-}
-
-void Tavern::getFood(int menuItem)
-{
-    if (menuItem == 0)
-        //std::visit(FoodVisitor(), mead);
-        std::cout << "checking local food 0 recipe: " << localFood0 << std::endl;
-    if (menuItem == 1)
-        std::cout << "checking local food 1 recipe: " << localFood1 << std::endl;
-    if (menuItem == 2)
-        std::cout << "checking local food 2 recipe: " << localFood2 << std::endl;
-
-    //std::cout << mead << std::endl;
 }

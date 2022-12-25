@@ -11,6 +11,6 @@ private:
     int large;
     std::string mead;
 public:
-    void getFood(int);
-    void replaceFood(std::string);
+    std::string getFood(int menuItem);
+    void variantFood();
 };
