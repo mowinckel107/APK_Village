@@ -2,7 +2,7 @@
 
 #pragma once
 
-
+#include<stdint.h>
 
 enum MetalType : uint8_t 
 {
