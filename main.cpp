@@ -54,9 +54,10 @@ int main(int argc, char *argv[])
 	//boostInnkeeper.addToCleaning(John);
 	//boostInnkeeper.addToCleaning(Jim);
 	//boostInnkeeper.addToCleaning(Mary);
+	boostInnkeeper.addToCleaning(&dishwasher);
 	//boostInnkeeper.addAssistant();
 	//boostInnkeeper.getTavern().variantFood();
-	//boostInnkeeper.clean();
+	boostInnkeeper.clean();
 
 	}
 	return 0;

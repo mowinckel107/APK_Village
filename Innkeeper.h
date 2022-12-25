@@ -20,12 +20,16 @@ struct Barmaid
     std::string name_;
 };
 
+void dishwasher()
+{
+    std::cout << "Dishwasher is washing the dishes" << std::endl;
+}
+
 class Innkeeper
 {
 private:
     Tavern boostTavern;
     boost::signals2::signal<void()> cleaningSignal;
-    boost::signals2::signal<void()> bringFoodAndDrinkSignal;
 public:
     std::string makeFood();
     std::string bringFood();
@@ -36,6 +40,7 @@ public:
     void addAssistant();
     void addToCleaning(struct stableBoy newCleaner);
     void addToCleaning(struct Barmaid newCleaner);
+    void addToCleaning(void (*)());
     Tavern getTavern();
 };
 
