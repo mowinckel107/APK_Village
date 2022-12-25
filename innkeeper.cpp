@@ -1,5 +1,4 @@
 
-#include "boostTavernUtils.cpp"
 #include "Innkeeper.h"
 
 std::string Innkeeper::checkMenuItem(int menuItem)
