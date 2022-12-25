@@ -1,8 +1,4 @@
-#ifndef HEADER_INCLUDE_BREAD
-#define HEADER_INCLUDE_BREAD
+#pragma once
 class Bread
 {
-public:
-    ~Bread();
 };
-#endif

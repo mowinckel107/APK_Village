@@ -1,5 +1,5 @@
 #include "BakerKing.h"
-#include "iostream"
+#include <iostream>
 #include <stdexcept>
 
 BakerKing::BakerKing()
@@ -8,29 +8,34 @@ BakerKing::BakerKing()
     theStrongBakery = StrongBakery();
 }
 
-Bread* BakerKing::OrderBasicBread()
+void BakerKing::OrderBasicBread()
 {
+    std::cout << "Baking bread using basic bakery" << std::endl;
     try
     {
-        return theBasicBakery.BakeBread();
+        Bread* b = theBasicBakery.BakeBread();
+        std::cout << "Succes you got bread from the basic bakery" << std::endl;
+        delete b;
     }
     catch(const std::runtime_error& e)
     {
-        std::cerr << "BakerKing: " << e.what() << '\n';
-        throw(e); //rethrow
+        std::cerr << "Baking using basic bakery failed: ";  
+        std::cerr << e.what() << std::endl;
     }
-    
-    
 }
 
-Bread* BakerKing::OrderStrongBread()
+void BakerKing::OrderStrongBread()
 {
+    std::cout << "Baking bread using strong bakery" << std::endl;
     try
     {
-        return theStrongBakery.BakeBread();
+        Bread* b = theStrongBakery.BakeBread();
+        std::cout << "Succes you got bread from the strong bakery" << std::endl;
+        delete b;
     }
     catch(const std::runtime_error& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Baking using strong bakery failed: ";
+        std::cerr << e.what() << std::endl;
     }
 }

@@ -4,14 +4,14 @@
 
 
 
-enum MetalType 
+enum MetalType : uint8_t 
 {
 	iron, 
 	steel,
 	copper
 };
 
-enum Mixer 
+enum Mixer  : uint8_t 
 {
 	carbon,
 	nothing
