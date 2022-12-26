@@ -20,11 +20,6 @@ struct Barmaid
     std::string name_;
 };
 
-void dishwasher()
-{
-    std::cout << "Dishwasher is washing the dishes" << std::endl;
-}
-
 class Innkeeper
 {
 private:

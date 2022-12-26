@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 
 #include "Smith.h"
@@ -13,7 +11,7 @@
 #include "Reduce/SumPolicy.h"
 #include "Reduce/MinPolicy.h"
 
-
+#include "dishwasherFunction.cpp"
 
 void townCrierTest();
 void ReduceTest();
@@ -49,22 +47,23 @@ int main(int argc, char *argv[])
 		Marketplace marketplace;
 		Smith smith(&marketplace);
 
-	// Running the village:
+		// Running the village:
 	
-	mySmith.CalloutMetalType();
-	mySmith.HandOverMetal();
-	mySmith.CalloutMetalType();
+		mySmith.CalloutMetalType();
+		mySmith.HandOverMetal();
+		mySmith.CalloutMetalType();
 
 		myBakerKing.OrderBasicBread();
 		myBakerKing.OrderStrongBread();
-	//boostInnkeeper.addToCleaning(John);
-	//boostInnkeeper.addToCleaning(Jim);
-	//boostInnkeeper.addToCleaning(Mary);
-	boostInnkeeper.addToCleaning(&dishwasher);
-	//boostInnkeeper.addAssistant();
-	//boostInnkeeper.getTavern().variantFood();
-	boostInnkeeper.clean();
-
+		
+		boostInnkeeper.addToCleaning(John);
+		boostInnkeeper.addToCleaning(Jim);
+		boostInnkeeper.addToCleaning(Mary);
+		boostInnkeeper.addToCleaning(&dishwasher);
+		boostInnkeeper.getTavern().variantFood();
+		boostInnkeeper.clean();
+		//boostInnkeeper.addAssistant();
+		//Bring drinks
 	}
 	return 0;
 }

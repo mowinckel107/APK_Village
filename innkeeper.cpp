@@ -19,6 +19,12 @@ void Innkeeper::addToCleaning(struct Barmaid newCleaner)
     cleaningSignal.connect(newCleaner);
 }
 
+void Innkeeper::addToCleaning(void newCleaner())
+{
+    std::cout << "Adding dishwashing to cleaning" << std::endl;
+    cleaningSignal.connect(newCleaner);
+}
+
 void Innkeeper::clean()
 {
     cleaningSignal();
