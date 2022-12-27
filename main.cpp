@@ -13,7 +13,8 @@
 
 #include "dishwasherFunction.cpp"
 
-void townCrierTest();
+void TownCrierTest();
+void MarketplaceTest();
 void ReduceTest();
 
 static const bool isTesting = true; // Set to true/false to run tests or not
@@ -39,7 +40,8 @@ int main(int argc, char *argv[])
 	if constexpr(isTesting)
 	{
 		ReduceTest();
-		townCrierTest();
+		TownCrierTest();
+		MarketplaceTest();
 	}
 	else
 	{
@@ -55,9 +57,13 @@ int main(int argc, char *argv[])
 		mySmith.HandOverMetal();
 		mySmith.CalloutMetalType();
 
+		myMarketplace.YellStock();
+		myMarketplace.SortStock();
+		myMarketplace.YellStock();
+
 		myBakerKing.OrderBasicBread();
 		myBakerKing.OrderStrongBread();
-		
+
 		boostInnkeeper.addToCleaning(John);
 		boostInnkeeper.addToCleaning(Jim);
 		boostInnkeeper.addToCleaning(Mary);
@@ -106,7 +112,7 @@ void ReduceTest()
 }
 
 
-void townCrierTest()
+void TownCrierTest()
 {
 
 	TimeOfDay *timeOfDay = timeOfDay->createTimeOfDay();
@@ -119,5 +125,16 @@ void townCrierTest()
 	townCrier.WakeMeWhenItIsNight();
     std::cout << "      Villagers: \"Going to bed :C\"" << std::endl;
 
+}
+
+void MarketplaceTest()
+{
+	Marketplace myMarketplace;
+
+	myMarketplace.YellStock();
+
+	myMarketplace.SortStock();
+
+	myMarketplace.YellStock();
 }
 

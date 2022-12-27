@@ -20,7 +20,7 @@ Smith::Smith(Marketplace * marketplacePointer)
 void Smith::HandOverMetal()
 {
 	marketplacePointer_->HandoverMetal(&storedMetal.metal);
-	std::cout << "Smith: \"Handed over Metal to the Marketplace\"" << std::endl;
+	std::cout << "   Smith: \"Handed over Metal to the Marketplace\"" << std::endl;
 }
 
 
@@ -28,25 +28,25 @@ void Smith::HandOverMetal()
 
 void Smith::CalloutMetalType()
 {
-	if(storedMetal.metal.data_ == nullptr)
+	if(storedMetal.metal.data_ == nullptr || *storedMetal.metal.data_ == empty)
 	{
-		std::cout << "Smith: \"I have no metal\"" << std::endl;
+		std::cout << "   Smith: \"I have no metal\"" << std::endl;
 	}
 	else if(*storedMetal.metal.data_ == iron)
 	{
-		std::cout << "Smith: \"I have Iron\"" << std::endl;
+		std::cout << "   Smith: \"I have Iron\"" << std::endl;
 	}
 	else if(*storedMetal.metal.data_ == steel)
 	{
-		std::cout << "Smith: \"I have Steel\"" << std::endl;
+		std::cout << "   Smith: \"I have Steel\"" << std::endl;
 	}
 	else if(*storedMetal.metal.data_ == copper)
 	{
-		std::cout << "Smith: \"I have Copper\"" << std::endl;
+		std::cout << "   Smith: \"I have Copper\"" << std::endl;
 	}
 	else
 	{
-		std::cout << "Smith: \"No idea\"" << std::endl;
+		std::cout << "   Smith: \"No idea\"" << *storedMetal.metal.data_ << storedMetal.metal.data_ <<   std::endl;
 	}
 
 }

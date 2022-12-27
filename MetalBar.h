@@ -6,6 +6,7 @@
 
 enum MetalType : uint8_t 
 {
+	empty, 
 	iron, 
 	steel,
 	copper
@@ -48,16 +49,19 @@ struct MetalBar
 struct Iron: public MetalBar
 {
 	Iron();
+	Iron(MetalBar&& other) noexcept;
 };
 
 struct Steel: public MetalBar
 {
 	Steel();
+	Steel(MetalBar&& other) noexcept;
 };
 
 struct Copper: public MetalBar
 {
 	Copper();
+	Copper(MetalBar&& other) noexcept;
 };
 
 
