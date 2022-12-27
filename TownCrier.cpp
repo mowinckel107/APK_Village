@@ -7,7 +7,7 @@
 
 TownCrier::TownCrier(TimeOfDay* theTimePointer)
 {
-    std::cout << "TownCrier::TownCrier 1" << std::endl;
+    std::cout << "      TownCrier wakes up" << std::endl;
     theTimePointer_ = theTimePointer;
     std::thread aThread(Work, std::ref(theMutex_), std::ref(conditionVariable_), std::ref(isItEvning_), std::ref(isItnight_), theTimePointer_);
     theThread_ = std::move(aThread);
