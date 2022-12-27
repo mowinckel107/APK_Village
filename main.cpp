@@ -16,11 +16,13 @@
 void townCrierTest();
 void ReduceTest();
 
-static const bool isTestingDone = true; // Set to true/false to run tests or not
+static const bool isTesting = true; // Set to true/false to run tests or not
 
 
 int main(int argc, char *argv[])
 {
+
+	std::cout << "c++ version: " << __cplusplus << std::endl;
 
 	// Initialization:
 	Marketplace myMarketplace;
@@ -34,7 +36,7 @@ int main(int argc, char *argv[])
 	Mary.name_ = "Mary";
 	BakerKing myBakerKing;
 
-	if constexpr(isTestingDone)
+	if constexpr(isTesting)
 	{
 		ReduceTest();
 		townCrierTest();
