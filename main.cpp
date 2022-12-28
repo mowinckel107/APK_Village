@@ -12,11 +12,20 @@
 #include "Reduce/MinPolicy.h"
 
 #include "dishwasherFunction.h"
+#include "Bank/RichPerson.h"
+#include "Bank/MiddelClassPerson.h"
+#include "Bank/PoorPerson.h"
+#include "Bank/Bank.h"
+#include "Bank/Bank2.h"
+#include "Bank/Bank3.h"
+
+#include "dishwasherFunction.cpp"
 
 void TownCrierTest();
 void MarketplaceTest();
 void ReduceTest();
 void boostInnRun();
+void BankTest();
 
 static const bool isTesting = true; // Set to true/false to run tests or not
 
@@ -40,6 +49,7 @@ int main(int argc, char *argv[])
 
 	if constexpr(isTesting)
 	{
+		BankTest();
 		ReduceTest();
 		MarketplaceTest();
 		TownCrierTest();
@@ -71,6 +81,33 @@ int main(int argc, char *argv[])
 
 	}
 	return 0;
+}
+
+void BankTest()
+{
+	Bank myBank = Bank();
+	Bank2 myBank2 = Bank2();
+	Bank3 myBank3 = Bank3();
+
+	RichPerson myRich1 = RichPerson(2, 400);
+	RichPerson myRich2 = RichPerson(3);
+	myRich1.Brag();
+	myRich2.Brag();
+
+	MiddelClassPerson myMiddel = MiddelClassPerson(4, 200);
+	PoorPerson myPoor = PoorPerson();
+
+	myBank.customerArrives(myRich1);
+	myBank.customerArrives(myMiddel);
+	//myBank.customerArrives(myPoor);
+
+	myBank2.customerArrives(myRich1);
+	myBank2.customerArrives(myMiddel);
+	//myBank2.customerArrives(myPoor);
+
+	myBank3.customerArrives(myRich1);
+	myBank3.customerArrives(myMiddel);
+	myBank3.customerArrives(myPoor);
 }
 
 template<typename T>
