@@ -11,28 +11,28 @@
 #include "Reduce/SumPolicy.h"
 #include "Reduce/MinPolicy.h"
 
-#include "dishwasherFunction.cpp"
+#include "dishwasherFunction.h"
 
 void townCrierTest();
 void ReduceTest();
+void boostInnRun();
 
-static const bool isTestingDone = true; // Set to true/false to run tests or not
+static const bool isTestingDone = false; // Set to true/false to run tests or not
 
 
 int main(int argc, char *argv[])
 {
-
 	// Initialization:
 	Marketplace myMarketplace;
 	Smith mySmith(&myMarketplace);
-    Innkeeper boostInnkeeper;
+	BakerKing myBakerKing;
+	Innkeeper boostInnkeeper;
 	stableBoy John;
 	John.name_ = "John";
 	stableBoy Jim;
 	Jim.name_ = "Jim";
 	Barmaid Mary;
 	Mary.name_ = "Mary";
-	BakerKing myBakerKing;
 
 	if constexpr(isTestingDone)
 	{
@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 		TownCrier townCrier(timeOfDay);
 		Marketplace marketplace;
 		Smith smith(&marketplace);
+		boostInnRun();
 
 		// Running the village:
 	
@@ -55,15 +56,10 @@ int main(int argc, char *argv[])
 
 		myBakerKing.OrderBasicBread();
 		myBakerKing.OrderStrongBread();
+
+		boostInnRun();
 		
-		boostInnkeeper.addToCleaning(John);
-		boostInnkeeper.addToCleaning(Jim);
-		boostInnkeeper.addToCleaning(Mary);
-		boostInnkeeper.addToCleaning(&dishwasher);
-		boostInnkeeper.getTavern().variantFood();
-		boostInnkeeper.clean();
-		//boostInnkeeper.addAssistant();
-		//Bring drinks
+
 	}
 	return 0;
 }
@@ -119,3 +115,36 @@ void townCrierTest()
 
 }
 
+void boostInnRun()
+{    
+	Innkeeper boostInnkeeper;
+
+	//Variants
+	boostInnkeeper.getTavern().variantFood();
+
+	//Signals
+	stableBoy John;
+	John.name_ = "John";
+	stableBoy Jim;
+	Jim.name_ = "Jim";
+	Barmaid Mary;
+	Mary.name_ = "Mary";
+	stableBoy Bob;
+	Bob.name_ = "Bob";
+	boostInnkeeper.addToCleaning(John);
+	boostInnkeeper.addToCleaning(Jim);
+	boostInnkeeper.tempWorker(Bob);
+	boostInnkeeper.addToCleaning(Mary);
+	boostInnkeeper.addToCleaning(&dishwasher);
+	boostInnkeeper.addToSpecificCleaning(&specificDishwasher);
+	boostInnkeeper.clean();
+	boostInnkeeper.clean("Poul");
+	boostInnkeeper.fireFromCleaning(John);
+	boostInnkeeper.clean();
+	//Det er også muligt at sende connect slots (slot_type&) som argumenter. Det er lidt involveret og ikke implementeret
+	//boostInnkeeper.addAssistant();
+	//Bring drinks
+
+	//bind
+	boostInnkeeper.getBindAssistant().bindTasks();
+}

@@ -7,7 +7,7 @@
 
 class FoodVisitor : public boost::static_visitor<>
 {
-    public:
+    public: //template skal lave primær, partial og fully specialized
     void operator() (int i) const
     {
         std::cout << "Cup size: " << i << std::endl;
@@ -20,7 +20,7 @@ class FoodVisitor : public boost::static_visitor<>
     {
         std::cout << "Cup size: " << i << std::endl;
     }
-    void operator() (std::string s) const
+    void operator() (std::string s) const //template - fully specialized template
     {
         if (s.empty())
             std::cout << "recipe is empty: " << std::endl;
@@ -53,8 +53,7 @@ std::string Tavern::getFood(int menuItem)
         std::cout << "checking local food 2 recipe: " << localFood2 << std::endl;
         return localFood2;
     }
-
-
+    return "";
     //std::cout << mead << std::endl;
 }
 
