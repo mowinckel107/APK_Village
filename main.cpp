@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 	if constexpr(isTesting)
 	{
 		ReduceTest();
-		TownCrierTest();
 		MarketplaceTest();
+		TownCrierTest();
 	}
 	else
 	{
