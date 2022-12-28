@@ -23,7 +23,7 @@ auto reduce(T const* beginning, T const* end)
 /*template<typename T, typename RES = ReduceTraits<T>>
 auto reduce(T const* beginning, T const* end)
 {
-    typename RES::Result result = RES::zero;
+    typename RES::Result result = RES::startValue;
 
     std::cout << "Reduce template result type: " << typeid(result).name() << std::endl;
 

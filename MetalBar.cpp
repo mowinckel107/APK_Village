@@ -5,16 +5,21 @@
 #include<iostream>
 
 
-
+static int createdCounter;
+static int deletedCounter;
 
 MetalBar::MetalBar()
 {
+	// createdCounter++;
+	// std::cout << "--MetalBars created: " << createdCounter << std::endl;
     data_ = nullptr;
 }
 
 
 MetalBar::~MetalBar()
 {
+	// deletedCounter++;
+	// std::cout << "----- MetalBars delete: " << deletedCounter << std::endl;
 	delete data_;
 }
 
@@ -42,6 +47,7 @@ MetalBar& MetalBar::operator=(MetalBar&& other) noexcept
 {
 	if (this != &other) // protect against self assignment
 	{
+		// std::cout << "Move assignment operator" << std::endl;
 		std::swap(other.data_, data_);
 	}
 	return *this;
@@ -50,6 +56,7 @@ MetalBar& MetalBar::operator=(MetalBar&& other) noexcept
 // Move Constructor
 MetalBar::MetalBar(MetalBar&& other) noexcept
 {
+	// std::cout << "Move Constructor" << std::endl;
 	data_ = nullptr;
 	std::swap(data_ = new MetalType,other.data_);
 }
@@ -65,14 +72,37 @@ Iron::Iron()
 }
 
 
+Iron::Iron(MetalBar&& other) noexcept
+{
+	data_ = nullptr;
+	std::swap(data_ = new MetalType,other.data_);
+}
+
+
+
 Steel::Steel()
 {
 	data_ = new MetalType();
 	*data_ = steel;
 }
 
+
+Steel::Steel(MetalBar&& other) noexcept
+{
+	data_ = nullptr;
+	std::swap(data_ = new MetalType,other.data_);
+}
+
+
+
 Copper::Copper()
 {
 	data_ = new MetalType();
 	*data_ = copper;
+}
+
+Copper::Copper(MetalBar&& other) noexcept
+{
+	data_ = nullptr;
+	std::swap(data_ = new MetalType,other.data_);
 }

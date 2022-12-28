@@ -13,15 +13,19 @@
 
 #include "dishwasherFunction.h"
 
-void townCrierTest();
+void TownCrierTest();
+void MarketplaceTest();
 void ReduceTest();
 void boostInnRun();
 
-static const bool isTestingDone = false; // Set to true/false to run tests or not
+static const bool isTesting = true; // Set to true/false to run tests or not
 
 
 int main(int argc, char *argv[])
 {
+
+	std::cout << "c++ version: " << __cplusplus << std::endl;
+
 	// Initialization:
 	Marketplace myMarketplace;
 	Smith mySmith(&myMarketplace);
@@ -34,10 +38,11 @@ int main(int argc, char *argv[])
 	Barmaid Mary;
 	Mary.name_ = "Mary";
 
-	if constexpr(isTestingDone)
+	if constexpr(isTesting)
 	{
 		ReduceTest();
-		townCrierTest();
+		TownCrierTest();
+		MarketplaceTest();
 	}
 	else
 	{
@@ -53,6 +58,10 @@ int main(int argc, char *argv[])
 		mySmith.CalloutMetalType();
 		mySmith.HandOverMetal();
 		mySmith.CalloutMetalType();
+
+		myMarketplace.YellStock();
+		myMarketplace.SortStock();
+		myMarketplace.YellStock();
 
 		myBakerKing.OrderBasicBread();
 		myBakerKing.OrderStrongBread();
@@ -100,7 +109,7 @@ void ReduceTest()
 }
 
 
-void townCrierTest()
+void TownCrierTest()
 {
 
 	TimeOfDay *timeOfDay = timeOfDay->createTimeOfDay();
@@ -148,3 +157,14 @@ void boostInnRun()
 	//bind
 	boostInnkeeper.getBindAssistant().bindTasks();
 }
+void MarketplaceTest()
+{
+	Marketplace myMarketplace;
+
+	myMarketplace.YellStock();
+
+	myMarketplace.SortStock();
+
+	myMarketplace.YellStock();
+}
+
