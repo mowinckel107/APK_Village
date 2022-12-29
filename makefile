@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindMixer.cpp functionAssistant.cpp
+SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindMixer.cpp functionAssistant.cpp Bank/MiddelClassPerson.cpp Bank/RichPerson.cpp 
 =======
 SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindMixer.cpp functionAssistant.cpp Bank/MiddelClassPerson.cpp Bank/RichPerson.cpp 
 DIRECTORIES = Bank
