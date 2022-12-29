@@ -1,4 +1,4 @@
-#include "bindAssistant.h"
+#include "bindMixer.h"
 #include <iostream>
 
 
@@ -38,7 +38,7 @@ struct Distiller
     }
 };
 
-void BindAssistant::bindTasks()
+void BindMixer::bindTasks()
 {
     int beer = 3;
     int water = 8;

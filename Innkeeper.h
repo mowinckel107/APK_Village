@@ -3,7 +3,8 @@
 #include "tavern.h"
 #include "boost/signals2.hpp"
 #include <iostream>
-#include "bindAssistant.h"
+#include "bindMixer.h"
+#include "functionAssistant.h"
 
 struct stableBoy //Fri struct
 {
@@ -31,9 +32,10 @@ class Innkeeper
 {
 private:
     Tavern boostTavern;
-    BindAssistant boostedBindAssistant;
+    BindMixer boostedBindMixer;
     boost::signals2::signal<void()> cleaningSignal;
     boost::signals2::signal<bool(std::string)> superSpecificCleaningSignal;
+    int money = 0;
     //Combiners: Man kan lave en struct som tager inputtet fra alle signalerne og sammenligner dem... Det giver mening for talværdier, men måske ikke så meget her
     //Sådan en reducer f.eks.
 public:
@@ -52,6 +54,8 @@ public:
     void fireFromCleaning(struct stableBoy newCleaner);
     void tempWorker(struct stableBoy newCleaner);
     Tavern getTavern();
-    BindAssistant getBindAssistant();
+    BindMixer getBindMixer();
+    void removeMoneyFromTheRegister(int, int&);
+    void tellAssistantToGetReadyToPay(FunctionAssistant&);
 };
 

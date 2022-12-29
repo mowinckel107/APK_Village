@@ -29,7 +29,7 @@ struct F
 //boost::thread, reordering, composition
 
 
-class BindAssistant
+class BindMixer
 {
     private:
     public: //STL::bind has limitations - mainly bad because DEPRECATED

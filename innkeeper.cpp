@@ -70,7 +70,26 @@ Tavern Innkeeper::getTavern()
     return boostTavern;
 }
 
-BindAssistant Innkeeper::getBindAssistant()
+BindMixer Innkeeper::getBindMixer()
 {
-    return boostedBindAssistant;
+    return boostedBindMixer;
+}
+
+void Innkeeper::removeMoneyFromTheRegister(int coins, int& totalCoins)//int coins, int& totalCoins)
+{
+    std::cout << "The register contains " << &totalCoins << " coins" << std::endl;
+    if (totalCoins > coins)
+    {
+        std::cout << "Removing " << coins << " coins from the register" << std::endl;
+        totalCoins -= coins;
+        money = coins;
+    }
+    else
+        std::cout << "The register does not contain " << coins << " coins" << std::endl; 
+}
+
+void Innkeeper::tellAssistantToGetReadyToPay(FunctionAssistant& FA)
+{
+    FA.emptyFunction();
+    FA.saveFunction(boost::bind(&Innkeeper::removeMoneyFromTheRegister, this, boost::placeholders::_1, boost::placeholders::_2));
 }
