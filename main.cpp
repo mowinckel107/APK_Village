@@ -1,4 +1,5 @@
 #include <iostream>
+#include<stdint.h>
 
 #include "Smith.h"
 #include "Marketplace.h"
@@ -11,21 +12,28 @@
 #include "Reduce/MinPolicy.h"
 
 #include "dishwasherFunction.h"
+#include "Bank/RichPerson.h"
+#include "Bank/MiddelClassPerson.h"
+#include "Bank/PoorPerson.h"
+#include "Bank/Bank.h"
+#include "Bank/Bank2.h"
+#include "Bank/Bank3.h"
+
 #include "Innkeeper.h"
-//#include "functionAssistant.h"
 
 void TownCrierTest();
 void MarketplaceTest();
 void ReduceTest();
 void boostInnRun();
+void BankTest();
 
 static const bool isTesting = true; // Set to true/false to run tests or not
 
 
 int main(int argc, char *argv[])
 {
-
 	std::cout << "c++ version: " << __cplusplus << std::endl;
+
 
 	// Initialization:
 	Marketplace myMarketplace;
@@ -39,40 +47,110 @@ int main(int argc, char *argv[])
 	Barmaid Mary;
 	Mary.name_ = "Mary";
 
-	if constexpr(isTesting)
+
+
+	bool isRunning = true;
+	while(isRunning)
 	{
-		ReduceTest();
-		MarketplaceTest();
-		boostInnRun();
-		TownCrierTest();
-	}
-	else
-	{
-		// Initialization:
-		TimeOfDay *timeOfDay = timeOfDay->createTimeOfDay();
-		TownCrier townCrier(timeOfDay);
-		Marketplace marketplace;
-		Smith smith(&marketplace);
-		boostInnRun();
+		int options = 0;
 
-		// Running the village:
-	
-		mySmith.CalloutMetalType();
-		mySmith.HandOverMetal();
-		mySmith.CalloutMetalType();
+		std::cout << std::endl << std::endl << "What part would you like to run?" << std::endl << std::endl;
+		
+		std::cout << "	Option 1: The Smith" << std::endl;
+		std::cout << "	Option 2: The Inn" << std::endl;
+		std::cout << "	Option 3: The Bakery" << std::endl;
+		std::cout << "	Option 4: The Towncrier" << std::endl;
+		std::cout << "	Option 5: The Marketplace" << std::endl;
+		std::cout << "	Option 6: The Bank" << std::endl;
+		std::cout << "	Option 9: Quit" << std::endl;
 
-		myMarketplace.YellStock();
-		myMarketplace.SortStock();
-		myMarketplace.YellStock();
+		std::cin >> options;
 
-		myBakerKing.OrderBasicBread();
-		myBakerKing.OrderStrongBread();
+		switch (options)
+		{
+			case 1:
+				mySmith.CalloutMetalType();
+				mySmith.HandOverMetal();
+				mySmith.CalloutMetalType();
+			break;
 
-		boostInnRun();
+
+
+
+			case 2:
+				boostInnRun();
+			break;
+
+
+
+
+			case 3:
+				myBakerKing.OrderBasicBread();
+				myBakerKing.OrderStrongBread();
+			break;
+
+
+
+			case 4:
+				TownCrierTest();
+			break;
+
+
+
+			case 5:
+				MarketplaceTest();
+			break;
+
+
+
+			case 6:
+				BankTest();
+			break;
+
+
+
+			case 9:
+				std::cout << "Ok... Bye" << std::endl;
+				isRunning = false;
+			break;
 		
 
+
+			default:
+				std::cout << "	What?" << std::endl << std::endl;
+			break;
+		}
 	}
+		// ReduceTest();	// TODO, not sure where to put this
+
 	return 0;
+}
+
+void BankTest()
+{
+	Bank myBank = Bank();
+	Bank2 myBank2 = Bank2();
+	Bank3 myBank3 = Bank3();
+
+	RichPerson myRich1 = RichPerson(2, 400);
+	RichPerson myRich2 = RichPerson(3);
+	myRich1.Brag();
+	myRich2.Brag();
+
+	MiddelClassPerson myMiddel = MiddelClassPerson(4, 200);
+	PoorPerson myPoor = PoorPerson();
+
+	myBank.customerArrives(myRich1);
+	myBank.customerArrives(myMiddel);
+	//myBank.customerArrives(myPoor);
+
+	myBank2.customerArrives(myRich1);
+	myBank2.customerArrives(myMiddel);
+	//myBank2.customerArrives(myPoor);
+
+	myBank3.customerArrives(myRich1);
+	myBank3.customerArrives(myMiddel);
+	myBank3.customerArrives(myPoor);
 }
 
 template<typename T>
@@ -113,7 +191,6 @@ void ReduceTest()
 
 void TownCrierTest()
 {
-
 	TimeOfDay *timeOfDay = timeOfDay->createTimeOfDay();
 	TownCrier townCrier(timeOfDay);
 
@@ -123,7 +200,6 @@ void TownCrierTest()
 
 	townCrier.WakeMeWhenItIsNight();
     std::cout << "      Villagers: \"Going to bed :C\"" << std::endl;
-
 }
 
 void boostInnRun()
