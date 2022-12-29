@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindMixer.cpp functionAssistant.cpp
 =======
-SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindAssistant.cpp Bank/MiddelClassPerson.cpp Bank/RichPerson.cpp 
+SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindMixer.cpp functionAssistant.cpp Bank/MiddelClassPerson.cpp Bank/RichPerson.cpp 
 DIRECTORIES = Bank
 >>>>>>> cc777f4f036a7084125d57c3dac0a7d9b08501b5
 OBJECTS=$(addprefix $(BUILD_DIR)/, $(SOURCES:.cpp=.o))
