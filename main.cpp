@@ -18,6 +18,7 @@
 #include "Bank/Bank.h"
 #include "Bank/Bank2.h"
 #include "Bank/Bank3.h"
+#include "Bank/Bank4.h"
 
 #include "Innkeeper.h"
 
@@ -131,6 +132,7 @@ void BankTest()
 	Bank myBank = Bank();
 	Bank2 myBank2 = Bank2();
 	Bank3 myBank3 = Bank3();
+	Bank4 myBank4 = Bank4();
 
 	RichPerson myRich1 = RichPerson(2, 400);
 	RichPerson myRich2 = RichPerson(3);
@@ -151,6 +153,10 @@ void BankTest()
 	myBank3.customerArrives(myRich1);
 	myBank3.customerArrives(myMiddel);
 	myBank3.customerArrives(myPoor);
+
+	myBank4.customerArrives(myRich1);
+	myBank4.customerArrives(myMiddel);
+	myBank4.customerArrives(myPoor);
 }
 
 template<typename T>
