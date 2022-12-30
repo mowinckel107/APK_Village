@@ -32,9 +32,10 @@ Bread* BasicBakery::BakeBreadNoRAII()
 	{
 		b = myOven.BakeBread(d);
 	}
-	catch(const std::exception& e)
+	catch(const std::runtime_error& e)
 	{
 		delete d;
+		//std::cerr << "basic bakery: " << e.what() << std::endl;
 		throw e;
 	}
 	delete d;
