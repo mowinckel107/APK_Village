@@ -5,24 +5,16 @@
 #include<iostream>
 
 
-static int createdCounter;
-static int deletedCounter;
-
 MetalBar::MetalBar()
 {
-	// createdCounter++;
-	// std::cout << "--MetalBars created: " << createdCounter << std::endl;
     data_ = nullptr;
 }
 
 
 MetalBar::~MetalBar()
 {
-	// deletedCounter++;
-	// std::cout << "----- MetalBars delete: " << deletedCounter << std::endl;
 	delete data_;
 }
-
 
 
 

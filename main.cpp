@@ -1,5 +1,8 @@
 #include <iostream>
 #include<stdint.h>
+#include <cstdarg> 
+// #include <cstdio>
+
 
 #include "Smith.h"
 #include "Marketplace.h"
@@ -31,6 +34,24 @@ void BankTest();
 static const bool isTesting = true; // Set to true/false to run tests or not
 
 
+
+static int counter = 1;
+void doPrint()
+{
+	counter = 1;
+}
+
+template <typename T, typename... Args>
+void doPrint(T t, Args... args)
+{
+    std::cout << "option " << counter << ": " <<  t << std::endl;
+	counter++;
+    doPrint(args...);
+}
+
+
+
+
 int main(int argc, char *argv[])
 {
 	std::cout << "c++ version: " << __cplusplus << std::endl;
@@ -57,13 +78,17 @@ int main(int argc, char *argv[])
 
 		std::cout << std::endl << std::endl << "What part would you like to run?" << std::endl << std::endl;
 		
+		doPrint("The Smith", "The Inn", "The Bakery", "The Towncrier", "The Marketplace", "The Bank", "Quit");
+
+		/*
 		std::cout << "	Option 1: The Smith" << std::endl;
 		std::cout << "	Option 2: The Inn" << std::endl;
 		std::cout << "	Option 3: The Bakery" << std::endl;
 		std::cout << "	Option 4: The Towncrier" << std::endl;
 		std::cout << "	Option 5: The Marketplace" << std::endl;
 		std::cout << "	Option 6: The Bank" << std::endl;
-		std::cout << "	Option 9: Quit" << std::endl;
+		std::cout << "	Option 7: Quit" << std::endl;
+		*/
 
 		std::cin >> options;
 
@@ -110,7 +135,7 @@ int main(int argc, char *argv[])
 
 
 
-			case 9:
+			case 7:
 				std::cout << "Ok... Bye" << std::endl;
 				isRunning = false;
 			break;
