@@ -13,7 +13,7 @@ void BakerKing::OrderBasicBread()
     std::cout << "Baking bread using basic bakery" << std::endl;
     try
     {
-        Bread* b = theBasicBakery.BakeBreadNoRAII();
+        Bread* b = theBasicBakery.BakeBread();
         std::cout << "Succes you got bread from the basic bakery" << std::endl;
         delete b;
     }
