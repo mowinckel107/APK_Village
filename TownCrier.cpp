@@ -1,13 +1,26 @@
 
 
 #include "TownCrier.h"
-
+#include <string>
 #include <iostream>
 
+static const int Town = 1;
+// static constexpr std::string = "Horsen"
 
 TownCrier::TownCrier(TimeOfDay* theTimePointer)
 {
-    std::cout << "      TownCrier wakes up" << std::endl;
+    if constexpr (Town == 1)
+    {
+    std::cout << "      TownCrier wakes up in Aarhus" << std::endl;
+    }
+    else if constexpr (Town == 2)
+    {
+    std::cout << "      TownCrier wakes up in Horsen" << std::endl;
+    }
+
+
+
+
     theTimePointer_ = theTimePointer;
     std::thread aThread(Work, std::ref(theMutex_), std::ref(conditionVariable_), std::ref(isItEvning_), std::ref(isItnight_), theTimePointer_);
     theThread_ = std::move(aThread);
