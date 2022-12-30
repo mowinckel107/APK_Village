@@ -36,6 +36,9 @@ class FoodVisitor : public boost::static_visitor<>
 //Stack-based container (no heap)
 //Assignable, default constructible, (=, <, >) comparable, output streamable, hashable
 
+//constexprr double operator"" _pint(double pint)
+//{return pint*2.113;}
+
 std::string Tavern::getFood(int menuItem)
 {
     if (menuItem == 0)

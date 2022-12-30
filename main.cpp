@@ -246,8 +246,10 @@ void boostInnRun()
 	boostInnkeeper.tellAssistantToGetReadyToPay(std::ref(boostAssistant));
 	std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
 	boostAssistant.runSaved(3, regRef);
-	//boostInnkeeper.removeMoneyFromTheRegister(5, regRef);
-	std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;	
+	std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
+
+	//futures and promises
+	boostInnkeeper.startCook("Venison");	
 }
 
 void MarketplaceTest()

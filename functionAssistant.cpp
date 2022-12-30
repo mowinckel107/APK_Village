@@ -48,8 +48,3 @@ void FunctionAssistant::emptyFunction()
 {
     cb_.empty();
 }
-
-//FunctionAssistant& FunctionAssistant::getSelf()
-//{
-//    return *this;
-//}

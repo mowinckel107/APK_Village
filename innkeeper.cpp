@@ -1,6 +1,11 @@
 #include "Innkeeper.h"
 #include <boost/optional/optional_io.hpp> //Denne er vigtig for at outputte returns
 
+Innkeeper::Innkeeper()
+{
+    futureCook_ = Cook (&futureHunter_);
+}
+
 std::string Innkeeper::checkMenuItem(int menuItem)
 {
     std::string food = boostTavern.getFood(menuItem); //0, 1, 2
@@ -92,4 +97,10 @@ void Innkeeper::tellAssistantToGetReadyToPay(FunctionAssistant& FA)
 {
     FA.emptyFunction();
     FA.saveFunction(boost::bind(&Innkeeper::removeMoneyFromTheRegister, this, boost::placeholders::_1, boost::placeholders::_2));
+}
+
+void Innkeeper::startCook(std::string recipe)
+{
+    std::cout << "Ordering cook to start the recipe: " << recipe << std::endl;
+    std::cout << std::endl << futureCook_.CookFood(recipe) << std::endl;
 }

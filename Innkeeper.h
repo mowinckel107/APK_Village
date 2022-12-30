@@ -5,6 +5,7 @@
 #include <iostream>
 #include "bindMixer.h"
 #include "functionAssistant.h"
+#include "Cook.h"
 
 struct stableBoy //Fri struct
 {
@@ -35,10 +36,13 @@ private:
     BindMixer boostedBindMixer;
     boost::signals2::signal<void()> cleaningSignal;
     boost::signals2::signal<bool(std::string)> superSpecificCleaningSignal;
+    Hunter futureHunter_;
+    Cook futureCook_;
     int money = 0;
     //Combiners: Man kan lave en struct som tager inputtet fra alle signalerne og sammenligner dem... Det giver mening for talværdier, men måske ikke så meget her
     //Sådan en reducer f.eks.
 public:
+    Innkeeper();
     std::string makeFood();
     std::string bringFood();
     std::string bringAle(std::string);
@@ -57,5 +61,6 @@ public:
     BindMixer getBindMixer();
     void removeMoneyFromTheRegister(int, int&);
     void tellAssistantToGetReadyToPay(FunctionAssistant&);
+    void startCook(std::string);
 };
 
