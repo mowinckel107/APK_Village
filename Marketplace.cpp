@@ -10,14 +10,14 @@
 Marketplace::Marketplace()
 {
     // Seeding:
-    mixedStorage_.push(Steel());
-    mixedStorage_.push(Iron());
-    mixedStorage_.push(Steel());
-    mixedStorage_.push(Steel());
-    mixedStorage_.push(Iron());
-    mixedStorage_.push(Steel());
-    mixedStorage_.push(Iron());
-    mixedStorage_.push(Steel());
+    mixedStorage.push(Steel());
+    mixedStorage.push(Iron());
+    mixedStorage.push(Steel());
+    mixedStorage.push(Steel());
+    mixedStorage.push(Iron());
+    mixedStorage.push(Steel());
+    mixedStorage.push(Iron());
+    mixedStorage.push(Steel());
     
 };
 
@@ -27,25 +27,24 @@ void Marketplace::SortStock()
 {
     std::cout << "            Marketplace sorts inventory" << std::endl;
 
-    while(!mixedStorage_.empty())
+    while(!mixedStorage.empty())
     {
-        if(*mixedStorage_.top().data_ == iron)
+        if(*mixedStorage.top().data_ == iron)
         {
-            sortedIronStorage.emplace(sortedIronStorage.end(), std::move(mixedStorage_.top()));
-            mixedStorage_.pop();
+            sortedIronStorage.emplace(sortedIronStorage.end(), std::move(mixedStorage.top()));
+            mixedStorage.pop();
         }
-        else if(*mixedStorage_.top().data_ == steel)
+        else if(*mixedStorage.top().data_ == steel)
         {
-            sortedSteelStorage.emplace(sortedSteelStorage.end(), std::move(mixedStorage_.top()));
-            mixedStorage_.pop();
+            sortedSteelStorage.emplace(sortedSteelStorage.end(), std::move(mixedStorage.top()));
+            mixedStorage.pop();
         }
         else
         {
             std::cout << "            something else" << std::endl;
-            mixedStorage_.pop();
+            mixedStorage.pop();
         }
         
-        // YellStock();
     }
 }
 
@@ -54,7 +53,7 @@ void Marketplace::SortStock()
 void Marketplace::YellStock()
 {
 
-    std::cout << "            Marketplace I have " << mixedStorage_.size() << " unsorted stock." << std::endl;
+    std::cout << "            Marketplace I have " << mixedStorage.size() << " unsorted stock." << std::endl;
 
     std::cout << "            Marketplace sorted iron is:    ";
     std::for_each
@@ -73,7 +72,7 @@ void Marketplace::YellStock()
             }
             else
             {
-                // std::cout << " nullpointer";
+                std::cout << " Error";
             }
         }
     );
@@ -98,7 +97,7 @@ void Marketplace::YellStock()
             }
             else
             {
-                // std::cout << " nullpointer";
+                std::cout << " Error";
             }
         }
     );
@@ -110,7 +109,7 @@ void Marketplace::YellStock()
 
 void Marketplace::HandoverMetal(MetalBar * metalHandedOver)
 {
-    mixedStorage_.push(std::move(*metalHandedOver));
+    mixedStorage.push(std::move(*metalHandedOver));
 
 	std::cout << "            Marketplace: \"Got some Metal\"" << std::endl;
 }

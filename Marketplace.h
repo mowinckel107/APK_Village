@@ -17,10 +17,8 @@ class Marketplace
         void SortStock();
         void YellStock();
 
-    // private:
-    
-        std::stack< MetalBar, std::vector<MetalBar> > mixedStorage_; // Using a container adapter
-        // std::vector<MetalBar> mixedStorage_;
+    private:
+        std::stack< MetalBar, std::vector<MetalBar> > mixedStorage; 
         std::vector<Iron> sortedIronStorage;
         std::vector<Steel> sortedSteelStorage;
 };
