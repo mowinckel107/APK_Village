@@ -5,9 +5,10 @@
 
 //concept to check if T has memberfunction GetMoney
 template<typename T>
-concept HasMoney = requires(T t)
+concept HasMoneyAndId = requires(T t)
 {
-    {t.GetMoney()};
+    {t.GetMoney()} -> std::same_as<int>;
+    {t.GetId()} -> std::same_as<int>;
 };
 
 //check if T has memberfunction GetMoney

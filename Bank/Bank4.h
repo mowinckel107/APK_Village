@@ -11,7 +11,7 @@ public:
     typename std::enable_if<HasMoneyFunction<T>::value>::type
      customerArrives(T& customer) 
     {
-        std::cout << "Welcome to the bank3! You have " << customer.GetMoney() << " money" << std::endl;
+        std::cout << "Welcome to the bank4! You have " << customer.GetMoney() << " money" << std::endl;
     }
 
     template<typename T>

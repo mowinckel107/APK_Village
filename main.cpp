@@ -122,6 +122,7 @@ int main(int argc, char *argv[])
 
 
 			case 6:
+				//ReduceTest();
 				BankTest();
 			break;
 
@@ -156,12 +157,18 @@ void BankTest()
 	myRich1.Brag();
 	myRich2.Brag();
 
-	MiddelClassPerson myMiddel = MiddelClassPerson(4, 200);
-	PoorPerson myPoor = PoorPerson();
+	MiddelClassPerson myMiddel = MiddelClassPerson(6, 200);
+	PoorPerson myPoor = PoorPerson(8);
 
+	std::cout << "the bank has " << myBank.getTotalMoneyInBank() << " money" << std::endl;
+	myBank.PrintPassbook();
 	myBank.customerArrives(myRich1);
 	myBank.customerArrives(myMiddel);
 	//myBank.customerArrives(myPoor);
+	myBank.PrintPassbook();
+	std::cout << "the bank has " << myBank.getTotalMoneyInBank() << " money" << std::endl;
+	std::cout << "smallest payment in the bank: " << myBank.getsmallestTransaction() << std::endl;
+
 
 	myBank2.customerArrives(myRich1);
 	myBank2.customerArrives(myMiddel);
@@ -204,7 +211,7 @@ void ReduceTest()
 	auto result1 = reduce<int, SumPolicy, MainSumTraits<int>>(num, num+5);
 	std::cout << "reduce result with Main ReduceTraits: " << result1 << std::endl;
 
-	auto result2 = reduce(num, num+5);
+	auto result2 = reduce<int>(num, num+5);
 	std::cout << "reduce result with default ReduceTraits: " << result2 << std::endl;
 
 	auto result3 = reduce<int, MinPolicy, MainMinTraits<int>>(num, num+5);

@@ -14,7 +14,12 @@ int RichPerson::GetMoney()
     return money;
 }
 
+int RichPerson::GetId()
+{
+    return id;
+}
+
 void RichPerson::Brag()
 {
-    std::cout << "I have " << money << " money" << std::endl;
+    std::cout << "I have id: " << id << " and " << money << " money" << std::endl;
 }
