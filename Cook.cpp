@@ -19,16 +19,18 @@ std::string Cook::CookFood(std::string recipe)
         //Send jæger afsted, modtag et promise
         std::future<std::string> futureMeat = promiseOfMeat.get_future(); //Måske crasher den her?
         std::cout << "Hunter is being sent to hunt" << std::endl;
+
         std::thread huntingThread([this](std::promise<std::string> promiseOfMeat)
          {hunter_->goHunting(std::move(promiseOfMeat));},
          std::move(promiseOfMeat));//Hvis detached ikke joinable
+
         std::cout << "Hunter has been sent to hunt" << std::endl;
         
         std::cout << "Readying ingredients" << std::endl;
         sleep(1);
         std::cout << "Slice and Dice the vegetables" << std::endl;
         sleep(1);
-        //Start
+
         std::cout << "Waiting for meat ingredient" << std::endl;
         std::string resultOfHunt = futureMeat.get(); //Anvender automatisk "wait;"" løsningen
         huntingThread.join();
@@ -49,11 +51,6 @@ std::string Cook::CookFood(std::string recipe)
         {
             return "Vegetarian meal finished";
         }
-
-        
-        //std::cout << "Cooking ingredient " << ingredient << " now" << std::endl; //Måske er denne måde at vente bedre?
-        //std::string retMsg = "Meal finished" 
-
     }
     else
     {

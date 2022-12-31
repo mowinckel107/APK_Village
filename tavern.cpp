@@ -2,7 +2,7 @@
 #include <variant>
 #include <boost/variant.hpp>
 #include "tavern.h"
-
+#include <iomanip>
 
 
 class FoodVisitor : public boost::static_visitor<>
@@ -10,15 +10,23 @@ class FoodVisitor : public boost::static_visitor<>
     public: //template skal lave primær, partial og fully specialized
     void operator() (int i) const
     {
-        std::cout << "Cup size: " << i << std::endl;
+        std::cout << "Cup size: " << i << " liters" << std::endl;
     }
     void operator() (double i) const
     {
-        std::cout << "Cup size: " << i << std::endl;
+        std::cout << "Cup size: " << i << " liters" << std::endl;
     }
     void operator() (float i) const
     {
-        std::cout << "Cup size: " << i << std::endl;
+        std::cout << "Cup size: " << i << " liters" << std::endl;
+    }
+    //void operator() (_pint i) const
+    //{
+    //    std::cout << "cup size: " << i << " pints" << std::endl;
+    //}
+    void operator() (long double i) const
+    {
+        std::cout << "cup size: " << i << " pints" << std::endl;
     }
     void operator() (std::string s) const //template - fully specialized template
     {
@@ -36,9 +44,6 @@ class FoodVisitor : public boost::static_visitor<>
 //Stack-based container (no heap)
 //Assignable, default constructible, (=, <, >) comparable, output streamable, hashable
 
-//constexprr double operator"" _pint(double pint)
-//{return pint*2.113;}
-
 std::string Tavern::getFood(int menuItem)
 {
     if (menuItem == 0)
@@ -49,7 +54,7 @@ std::string Tavern::getFood(int menuItem)
     if (menuItem == 1)
     {
         std::cout << "checking local food 1 recipe: " << localFood1 << std::endl;
-        return localFood1;        
+        return localFood1;
     }
     if (menuItem == 2)
     {
@@ -60,41 +65,51 @@ std::string Tavern::getFood(int menuItem)
     //std::cout << mead << std::endl;
 }
 
+// Liter to pint converter
+long double operator"" _pint(long double pint)
+{return pint * 2.113;}
+
 void Tavern::variantFood()
 {
     //Forskellen på boost::variant og std::variant er at boost::variant under exception af allokering/kreering vil allokerer heap plads.
     //std::variant må derimod være valueless som resultat
 
     //std::variant, fordi den må kun indeholde floats
-    std::variant<float, int, double, std::string> small, medium, large, extraLarge, mead, undefinedSize, wine, localFood0, localFood1, localFood2;
-    small = "one";
-    small = 1; //Small overwritten to int
-    medium = 1.5;
-    large = 2;
-    extraLarge = 2.5F; //Stops existing at end of scope
-    mead = "1 part honey";
+    std::variant<float, int, double, std::string, long double> small_local, medium_local, large_local, extraLarge_local, mead_local, undefinedSize_local, wine_local, localFood0_local, localFood1_local, localFood2_local;
+    small_local = "one";
+    small_local = 1; //Small overwritten to int
+    medium_local = 1.5;
+    large_local = 2;
+    extraLarge_local = 2.5F; //Stops existing at end of scope
+    mead_local = "1 part honey";
     //std::cout << "Proleminary mead recipe: " << mead << std::endl;
-    std::string &s = std::get<std::string>(mead); //Stops existing at end of scope
+    std::string &s = std::get<std::string>(mead_local); //Stops existing at end of scope
     s += ", 5 parts water";
     //std::cout << "Final mead recipe: " << mead << std::endl;
-    wine = "red"; //Stops existing at end of scope
-    localFood0 = 35;
-    localFood1 = -58;
-    localFood2 = "namse";
-    undefinedSize = "";
+    wine_local = "red"; //Stops existing at end of scope
+    localFood0_local = 35;
+    localFood1_local = -58;
+    localFood2_local = "namse";
+    undefinedSize_local = "";
 
-    std::cout << std::get<1>(small) << std::endl;
+    std::cout << std::get<1>(small_local) << std::endl;
     //std::cout << std::get<1>(mead) << std::endl;
-    std::cout << std::get<3>(mead) << std::endl;
+    std::cout << std::get<3>(mead_local) << std::endl;
     //std::cout << std::get<4>(mead) << std::endl;
 
+    small_local = 1.1_pint; //Will fail at runtime
+    //auto temporary_small_local = small_local_pint; //Will fail
+    //small_local = temporary_small_local_pint; //Will fail
+    //small_local = small_local_pint; //Will fail
+    auto fresh_variable = 3.6_pint; //Will fail
+    std::visit(FoodVisitor(), small_local);
 
-    std::visit(FoodVisitor(), mead);
-    std::visit(FoodVisitor(), undefinedSize);
-    std::visit(FoodVisitor(), localFood0);
-    std::visit(FoodVisitor(), large);
+    std::visit(FoodVisitor(), mead_local);
+    std::visit(FoodVisitor(), undefinedSize_local);
+    std::visit(FoodVisitor(), localFood0_local);
+    std::visit(FoodVisitor(), large_local);
     //LAV EN MED LAMBDA HER
     std::cout << "lambda visit:" << std::endl;
-    std::visit([] (auto&& param) {std::cout << "Info om localFood via lambda: " << param << std::endl;}, localFood1);
+    std::visit([] (auto&& param) {std::cout << "Info om localFood via lambda: " << param << std::endl;}, localFood1_local);
     //Når vi går ud af scope, så bliver alt glemt
 }

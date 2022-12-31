@@ -11,6 +11,6 @@ namespace AnimalsOfTheForest
 
     struct Wolf
     {
-        std::string info_ = "Danger";
+        const std::string info_ = "Danger";
     };
 }

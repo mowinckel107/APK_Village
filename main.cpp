@@ -61,13 +61,13 @@ int main(int argc, char *argv[])
 	Marketplace myMarketplace;
 	Smith mySmith(&myMarketplace);
 	BakerKing myBakerKing;
-	Innkeeper boostInnkeeper;
-	stableBoy John;
-	John.name_ = "John";
-	stableBoy Jim;
-	Jim.name_ = "Jim";
-	Barmaid Mary;
-	Mary.name_ = "Mary";
+//	Innkeeper boostInnkeeper;
+//	stableBoy John;
+//	John.name_ = "John";
+//	stableBoy Jim;
+//	Jim.name_ = "Jim";
+//	Barmaid Mary;
+//	Mary.name_ = "Mary";
 
 
 
@@ -236,51 +236,121 @@ void TownCrierTest()
 void boostInnRun()
 {    
 	Innkeeper boostInnkeeper;
+	std::cout << std::endl << std::endl << "Boost Tavern options (It's not all boost)" << std::endl;
+	doPrint("Variants", "Cleaning Signals", "BindMixer", "BoostFunction the Assistant", "Future Cook and future hunter");
 
-	//Variants
-	boostInnkeeper.getTavern().variantFood();
+	int options = 0;
 
-	//Signals
-	stableBoy John;
-	John.name_ = "John";
-	stableBoy Jim;
-	Jim.name_ = "Jim";
-	Barmaid Mary;
-	Mary.name_ = "Mary";
-	stableBoy Bob;
-	Bob.name_ = "Bob";
-	boostInnkeeper.addToCleaning(John);
-	boostInnkeeper.addToCleaning(Jim);
-	boostInnkeeper.tempWorker(Bob);
-	boostInnkeeper.addToCleaning(Mary);
-	boostInnkeeper.addToCleaning(&dishwasher);
-	boostInnkeeper.addToSpecificCleaning(&specificDishwasher);
-	boostInnkeeper.clean();
-	boostInnkeeper.clean("Poul");
-	boostInnkeeper.fireFromCleaning(John);
-	boostInnkeeper.clean();
-	//Det er også muligt at sende connect slots (slot_type&) som argumenter. Det er lidt involveret og ikke implementeret
+	std::cin >> options;
 
-	//bind
-	boostInnkeeper.getBindMixer().bindTasks();
+	//signals
+
 
 	//boost::function
-	FunctionAssistant boostAssistant;
-	int&& regRef = boostAssistant.getRegister();
-	boostAssistant.runSaved(6, regRef);
-	Patron André;
-	boostAssistant.saveFunction(André);
-	boostAssistant.runSaved(4, regRef);
-	boostAssistant.swapSaved(&donation);
-	boostAssistant.runSavedOnce(2, regRef);
-	boostAssistant.runSavedOnce(1, regRef);
-	boostInnkeeper.tellAssistantToGetReadyToPay(std::ref(boostAssistant));
-	std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
-	boostAssistant.runSaved(3, regRef);
-	std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
 
-	//futures and promises
-	boostInnkeeper.startCook("Venison");	
+
+	switch (options)
+	{
+		case 1:
+		{
+			//variants
+			boostInnkeeper.getTavern().variantFood();
+		}
+		break;
+		case 2:
+		{
+			//Signals
+			stableBoy John;
+			John.name_ = "John";
+			stableBoy Jim;
+			Jim.name_ = "Jim";
+			Barmaid Mary;
+			Mary.name_ = "Mary";
+			stableBoy Bob;
+			Bob.name_ = "Bob";
+
+			boostInnkeeper.addToCleaning(John);
+			boostInnkeeper.addToCleaning(Jim);
+			boostInnkeeper.tempWorker(Bob);
+			boostInnkeeper.addToCleaning(Mary);
+			boostInnkeeper.addToCleaning(&dishwasher);
+			boostInnkeeper.addToSpecificCleaning(&specificDishwasher);
+			boostInnkeeper.clean();
+			boostInnkeeper.clean("Poul");
+			boostInnkeeper.fireFromCleaning(John);
+			boostInnkeeper.clean();
+			//Det er også muligt at sende connect slots (slot_type&) som argumenter. Det er lidt involveret og ikke implementeret
+		}
+		break;
+		case 3:
+		{
+			//bind
+			boostInnkeeper.getBindMixer().bindTasks();
+		}
+		break;
+		case 4:
+		{
+			//boost::function
+			FunctionAssistant boostAssistant;
+			Patron André;
+
+			int&& regRef = boostAssistant.getRegister();
+			boostAssistant.runSaved(6, regRef);
+			boostAssistant.saveFunction(André);
+			boostAssistant.runSaved(4, regRef);
+			boostAssistant.swapSaved(&donation);
+			boostAssistant.runSavedOnce(2, regRef);
+			boostAssistant.runSavedOnce(1, regRef);
+			boostInnkeeper.tellAssistantToGetReadyToPay(std::ref(boostAssistant));
+			std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
+			boostAssistant.runSaved(3, regRef);
+			std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
+		}
+		break;
+		case 5:
+		{
+			//futures and promises
+			boostInnkeeper.startCook("Venison");	
+		}
+		break;
+		default:
+			std::cout << "1 through 5 are the available options" << std::endl;
+		break;
+	}
+
+
+
+
+
+}
+void Variant()
+{
+
+}
+
+void CleaningSignals()
+{
+
+}
+
+void BindMixer()
+{
+
+}
+
+void InnMixer()
+{
+
+}
+
+void InnFunction()
+{
+
+}
+
+void FutureCookAndHunter()
+{
+
 }
 
 void MarketplaceTest()
