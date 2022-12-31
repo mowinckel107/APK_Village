@@ -23,14 +23,12 @@ Marketplace::Marketplace()
 
 
 
-
 void Marketplace::SortStock()
 {
     std::cout << "            Marketplace sorts inventory" << std::endl;
 
     while(!mixedStorage_.empty())
     {
-
         if(*mixedStorage_.top().data_ == iron)
         {
             sortedIronStorage.emplace(sortedIronStorage.end(), std::move(mixedStorage_.top()));
@@ -50,6 +48,7 @@ void Marketplace::SortStock()
         // YellStock();
     }
 }
+
 
 
 void Marketplace::YellStock()

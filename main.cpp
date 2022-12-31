@@ -25,14 +25,11 @@
 
 #include "Innkeeper.h"
 
+void SmithRun(Marketplace* marketplace);
 void TownCrierTest();
-void MarketplaceTest();
 void ReduceTest();
 void boostInnRun();
 void BankTest();
-
-static const bool isTesting = true; // Set to true/false to run tests or not
-
 
 
 static int counter = 1;
@@ -56,10 +53,8 @@ int main(int argc, char *argv[])
 {
 	std::cout << "c++ version: " << __cplusplus << std::endl;
 
-
 	// Initialization:
 	Marketplace myMarketplace;
-	Smith mySmith(&myMarketplace);
 	BakerKing myBakerKing;
 //	Innkeeper boostInnkeeper;
 //	stableBoy John;
@@ -78,35 +73,30 @@ int main(int argc, char *argv[])
 
 		std::cout << std::endl << std::endl << "What part would you like to run?" << std::endl << std::endl;
 		
-		doPrint("The Smith", "The Inn", "The Bakery", "The Towncrier", "The Marketplace", "The Bank", "Quit");
-
-		/*
-		std::cout << "	Option 1: The Smith" << std::endl;
-		std::cout << "	Option 2: The Inn" << std::endl;
-		std::cout << "	Option 3: The Bakery" << std::endl;
-		std::cout << "	Option 4: The Towncrier" << std::endl;
-		std::cout << "	Option 5: The Marketplace" << std::endl;
-		std::cout << "	Option 6: The Bank" << std::endl;
-		std::cout << "	Option 7: Quit" << std::endl;
-		*/
+		doPrint
+		(
+			"The Smith",
+			"The Inn",
+			"The Bakery",
+			"The Towncrier",
+			"The Marketplace",
+			"The Bank",
+			"Quit"
+		);
 
 		std::cin >> options;
 
 		switch (options)
 		{
 			case 1:
-				mySmith.CalloutMetalType();
-				mySmith.HandOverMetal();
-				mySmith.CalloutMetalType();
+				SmithRun(&myMarketplace);
 			break;
-
 
 
 
 			case 2:
 				boostInnRun();
 			break;
-
 
 
 
@@ -124,7 +114,9 @@ int main(int argc, char *argv[])
 
 
 			case 5:
-				MarketplaceTest();
+				myMarketplace.YellStock();
+				myMarketplace.SortStock();
+				myMarketplace.YellStock();
 			break;
 
 
@@ -353,14 +345,12 @@ void FutureCookAndHunter()
 
 }
 
-void MarketplaceTest()
+void SmithRun(Marketplace* marketplace)
 {
-	Marketplace myMarketplace;
-
-	myMarketplace.YellStock();
-
-	myMarketplace.SortStock();
-
-	myMarketplace.YellStock();
+	Smith smith(marketplace);
+	smith.CalloutMetalType();
+	smith.HandOverMetal();
 }
+
+
 

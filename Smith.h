@@ -19,7 +19,6 @@ class Smith
 		// Metal<Copper, carbon> storedMetal; // Copper and carbon is not a legal mix, and will create errors
 
 		Marketplace * marketplacePointer_;
-
 };
 
 

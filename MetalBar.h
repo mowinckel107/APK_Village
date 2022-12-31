@@ -20,6 +20,8 @@ enum Mixer  : uint8_t
 
 
 
+	// The copy assignment operator and copy Constructor are explicitly deleted to showcase
+	// if they were not, because they are not defined, they would be implicitly deleted
 
 struct MetalBar
 {
@@ -27,21 +29,25 @@ struct MetalBar
     	MetalBar();
     	~MetalBar();
 
+		// Copy assignment operator 
+        MetalBar& operator= (const MetalBar &other ) = delete;
 
-        // The copy assignment operator and copy Constructor are explicitly deleted to showcase
-        // If they were not, because they are not defined, they would be implicitly deleted
+		// Copy Constructor
+        MetalBar(const MetalBar &other) = delete;  
+ 		
+ 		//Move assignment operator
+    	MetalBar& operator=(MetalBar&& other) noexcept;
 
-        MetalBar& operator= (const MetalBar &other ) = delete; // Copy assignment operator 
-        MetalBar(const MetalBar &other) = delete;  // Copy Constructor
-
-
-    	// MetalBar(const MetalBar &other); // Copy Constructor
-    	// MetalBar& operator= (const MetalBar &other ); // Copy assignment operator 
-    	MetalBar& operator=(MetalBar&& other) noexcept; //Move assignment operator
-    	MetalBar(MetalBar&& other) noexcept; // Move Constructor
-
+ 		// Move Constructor
+    	MetalBar(MetalBar&& other) noexcept;
 
     	MetalType* data_;
+
+		// Copy Constructor
+    	// MetalBar(const MetalBar &other);
+
+		// Copy assignment operator 
+    	// MetalBar& operator= (const MetalBar &other ); 
 };
 
 
@@ -73,14 +79,12 @@ struct Metal
     // empty, to give compile errors if used
 };
 
-
 // A partial specialization for use of "nothing" as mixer. This just returns the metal as is
 template<typename N>
 struct Metal<N, nothing>
 {
     N metal = N();
 };
-
 
 // A full specialization for use of "steel". steel is legal to use, and so this specialization will catch these legal uses.
 template<>
