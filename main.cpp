@@ -103,6 +103,8 @@ int main(int argc, char *argv[])
 			case 3:
 				myBakerKing.OrderBasicBread();
 				myBakerKing.OrderStrongBread();
+				myBakerKing.AddIngredientsToStrongBakery(100, 100, 100);
+				myBakerKing.OrderStrongBread();
 			break;
 
 
