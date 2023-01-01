@@ -7,7 +7,7 @@ struct Patron
 {
     void operator()(int coins, int & totalMoney)
     {
-        std::cout << "Patron pay " << coins << " coin(s) for a meal/drink" << std::endl;
+        std::cout << "    Patron pay " << coins << " coin(s) for a meal/drink" << std::endl;
         totalMoney  += coins;
     }
 };

@@ -70,7 +70,7 @@ public:
 template<typename Cleaner>
 void Innkeeper::fireFromCleaning(Cleaner hiredCleaner)
 {
-    std::cout << "Firing cleaner" << std::endl;
+    std::cout << "    Firing cleaner" << std::endl;
     cleaningSignal.disconnect(hiredCleaner);
 }
 
@@ -83,7 +83,7 @@ void Innkeeper::fireFromCleaning(Cleaner hiredCleaner)
 template<typename Cleaner>
 void Innkeeper::tempWorker(Cleaner newCleaner)
 {
-    std::cout << "Temp cleaner hired" << std::endl;
+    std::cout << "    Temp cleaner hired" << std::endl;
     boost::signals2::scoped_connection c = cleaningSignal.connect(newCleaner);
     cleaningSignal();
 }//newCleaner is disconnected

@@ -2,7 +2,7 @@
 
 void dishwasher()
 {
-    std::cout << "Dishwasher is washing the dishes" << std::endl;
+    std::cout << "    Dishwasher is washing the dishes" << std::endl;
 }
 
 bool specificDishwasher(std::string name_)

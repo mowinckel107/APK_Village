@@ -294,9 +294,9 @@ void boostInnRun()
 			boostAssistant.runSavedOnce(2, regRef);
 			boostAssistant.runSavedOnce(1, regRef);
 			boostInnkeeper.tellAssistantToGetReadyToPay(std::ref(boostAssistant));
-			std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
+			std::cout << "    Total coins: " << boostAssistant.getRegister() << std::endl;
 			boostAssistant.runSaved(3, regRef);
-			std::cout << "Total coins: " << boostAssistant.getRegister() << std::endl;
+			std::cout << "    Total coins: " << boostAssistant.getRegister() << std::endl;
 		}
 		break;
 		case 5:

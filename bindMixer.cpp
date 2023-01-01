@@ -5,15 +5,15 @@
 //Free function to bind
 double addDrinks(double a, double b)
 {
-    std::cout << "addDrinks called" << std::endl;
-    std::cout << "Add " << a << " to " << b << std::endl;
+    std::cout << "    AddDrinks called" << std::endl;
+    std::cout << "    Add " << a << " to " << b << std::endl;
     return a+b; //Dette skal være minus, find ud af hvordan det giver mening
 }
 
 template<typename H>
 double Inbetween(H h, double beer, double water)
 {
-    std::cout << "Inbetween step called" << std::endl;
+    std::cout << "    Inbetween step called" << std::endl;
     return h(beer, water*2);
 }
 
@@ -22,7 +22,7 @@ struct DoublingBeer //The amount of drinks and then the extra drinks
 {
     double operator()(double a, double b)
     {
-        std::cout << "multiplying " << a << " by " << b << std::endl;
+        std::cout << "    Multiplying " << a << " by " << b << std::endl;
         return a*b;
     }
 };
@@ -33,7 +33,7 @@ struct Distiller
     double removeWater (double a, double b)
     {
         //Using a magical cup
-        std::cout << "removeWater called" << std::endl;
+        std::cout << "    RemoveWater called" << std::endl;
         return a-b;
     }
 };

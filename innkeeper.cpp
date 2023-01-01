@@ -14,19 +14,19 @@ std::string Innkeeper::checkMenuItem(int menuItem)
 
 void Innkeeper::addToCleaning(struct stableBoy newCleaner)
 {
-    std::cout << "Adding stableboy to cleaning" << std::endl;
+    std::cout << "    Adding stableboy to cleaning" << std::endl;
     cleaningSignal.connect(newCleaner); //ligeglad hvornår, så bare gør det til sidst
 }
 
 void Innkeeper::addToCleaning(struct Barmaid newCleaner)
 {
-    std::cout << "Adding barmaid to cleaning" << std::endl;
+    std::cout << "    Adding barmaid to cleaning" << std::endl;
     cleaningSignal.connect(0, newCleaner); //først hent tallerkener ind
 }
 
 void Innkeeper::addToCleaning(void newCleaner())
 {
-    std::cout << "Adding dishwashing to cleaning" << std::endl;
+    std::cout << "    Adding dishwashing to cleaning" << std::endl;
     cleaningSignal.connect(1, newCleaner); //derefter gør dem rent
 }
 
@@ -53,14 +53,14 @@ void Innkeeper::clean()
 
 void Innkeeper::clean(std::string name_)
 {
-    std::cout << "Specific clean is called with " << name_ << std::endl;
-    std::cout << "And so it was that " << superSpecificCleaningSignal(name_) << std::endl; //Hvis der er flere med std::string på dette signal, så er det kun den sidste der kommer igennem
+    std::cout << "    Specific clean is called with " << name_ << std::endl;
+    std::cout << "    And so it was that " << superSpecificCleaningSignal(name_) << std::endl; //Hvis der er flere med std::string på dette signal, så er det kun den sidste der kommer igennem
     //Med flere talværdier, kan man returnere den højeste talværdi ved at skrive
 }
 
 void Innkeeper::addAssistant()
 {
-    std::cout << "Adding assistant to catering" << std::endl;
+    std::cout << "    Adding assistant to catering" << std::endl;
 }
 
 Tavern Innkeeper::getTavern()
@@ -73,17 +73,17 @@ BindMixer Innkeeper::getBindMixer()
     return boostedBindMixer;
 }
 
-void Innkeeper::removeMoneyFromTheRegister(int coins, int& totalCoins)//int coins, int& totalCoins)
+void Innkeeper::removeMoneyFromTheRegister(int coins, int& totalCoins)
 {
-    std::cout << "The register contains " << &totalCoins << " coins" << std::endl;
+    std::cout << "    The register contains " << &totalCoins << " coins" << std::endl;
     if (totalCoins > coins)
     {
-        std::cout << "Removing " << coins << " coins from the register" << std::endl;
+        std::cout << "    Removing " << coins << " coins from the register" << std::endl;
         totalCoins -= coins;
         money = coins;
     }
     else
-        std::cout << "The register does not contain " << coins << " coins" << std::endl; 
+        std::cout << "    The register does not contain " << coins << " coins" << std::endl; 
 }
 
 void Innkeeper::tellAssistantToGetReadyToPay(FunctionAssistant& FA)
@@ -94,6 +94,6 @@ void Innkeeper::tellAssistantToGetReadyToPay(FunctionAssistant& FA)
 
 void Innkeeper::startCook(std::string recipe)
 {
-    std::cout << "Ordering cook to start the recipe: " << recipe << std::endl;
+    std::cout << "    Ordering cook to start the recipe: " << recipe << std::endl;
     std::cout << std::endl << futureCook_.CookFood(recipe) << std::endl;
 }
