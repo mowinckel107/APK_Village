@@ -15,7 +15,6 @@ enum Times : uint8_t // Strongly typed enum
     night
 };
 
-
 class TimeOfDay
 {
     public:
@@ -29,6 +28,4 @@ class TimeOfDay
         static TimeOfDay* instance_;
         Times timeOfDay_;
         std::mutex theMutex;
-
-
 };
