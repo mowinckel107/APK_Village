@@ -1,5 +1,6 @@
-SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp BasicBakery.cpp StrongBakery.cpp Bread.cpp BakerKing.cpp Dough.cpp Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindMixer.cpp functionAssistant.cpp Bank/MiddelClassPerson.cpp Bank/RichPerson.cpp Cook.cpp Hunter.cpp
-DIRECTORIES = Bank
+SOURCES= main.cpp Smith.cpp MetalBar.cpp Marketplace.cpp Bakery/BasicBakery.cpp Bakery/StrongBakery.cpp Bakery/BakerKing.cpp Bakery/Dough.cpp Bakery/Oven.cpp TimeOfDay.cpp TownCrier.cpp innkeeper.cpp tavern.cpp bindMixer.cpp functionAssistant.cpp Bank/PoorPerson.cpp Bank/MiddelClassPerson.cpp Bank/RichPerson.cpp Bank/Bank.cpp Cook.cpp Hunter.cpp
+DIRECTORIES = Bank Bakery
+BUILD_DIRECTORIES = $(addprefix $(BUILD_DIR)/, $(DIRECTORIES))
 OBJECTS=$(addprefix $(BUILD_DIR)/, $(SOURCES:.cpp=.o))
 DEPS=$(addprefix $(BUILD_DIR)/, $(SOURCES:.cpp=.d))
 EXE=prog.exe
@@ -27,7 +28,7 @@ ${BIN_DIR}/$(EXE): $(DEPS) $(OBJECTS)  # << Check the $(DEPS) new dependency
 # Similar to the assigment that you just completed %.cpp -> %.o
 ${BUILD_DIR}/%.d: %.cpp
 	mkdir -p $(BUILD_DIR)
-	mkdir -p $(BUILD_DIR)/$(DIRECTORIES)
+	mkdir -p $(BUILD_DIRECTORIES)
 	$(CXX) -MT$(@:.d=.o) -MM $(CXXFLAGS) $^ > $@
 
 ${BUILD_DIR}/%.o: %.cpp

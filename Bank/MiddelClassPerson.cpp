@@ -12,3 +12,8 @@ int MiddelClassPerson::GetMoney()
 {
     return money;
 }
+
+int MiddelClassPerson::GetId()
+{
+    return id;
+}

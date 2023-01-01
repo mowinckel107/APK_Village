@@ -39,3 +39,13 @@ void BakerKing::OrderStrongBread()
         std::cerr << e.what() << std::endl;
     }
 }
+
+void BakerKing::AddIngredientsToBasicBakery(int flour, int water, int salt)
+{
+    theBasicBakery.AddIngredients(flour, water, salt);
+}
+
+void BakerKing::AddIngredientsToStrongBakery(int flour, int water, int salt)
+{
+    theStrongBakery.AddIngredients(flour, water, salt);
+}

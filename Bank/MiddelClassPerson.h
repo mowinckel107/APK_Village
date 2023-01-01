@@ -8,4 +8,5 @@ public:
     MiddelClassPerson(int);
     MiddelClassPerson(int,int);
     int GetMoney();
+    int GetId();
 };

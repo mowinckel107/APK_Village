@@ -14,6 +14,7 @@
 Smith::Smith(Marketplace * marketplacePointer)
 {
 	marketplacePointer_ = marketplacePointer;
+	std::cout << "Smith made" << std::endl;
 }
 
 
@@ -22,8 +23,6 @@ void Smith::HandOverMetal()
 	marketplacePointer_->HandoverMetal(&storedMetal.metal);
 	std::cout << "   Smith: \"Handed over Metal to the Marketplace\"" << std::endl;
 }
-
-
 
 
 void Smith::CalloutMetalType()
@@ -46,7 +45,7 @@ void Smith::CalloutMetalType()
 	}
 	else
 	{
-		std::cout << "   Smith: \"No idea\"" << *storedMetal.metal.data_ << storedMetal.metal.data_ <<   std::endl;
+		std::cout << "   Smith: \"No idea\" " << *storedMetal.metal.data_ << storedMetal.metal.data_ <<   std::endl;
 	}
 
 }
