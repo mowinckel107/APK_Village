@@ -20,9 +20,14 @@ class TownCrier
         void WakeMeWhenItIsNight();
 
     private:
-        static void Work(std::mutex &theMutex, std::condition_variable &conditionVariable, bool& isItEvning_, bool& isItnight_, TimeOfDay* timeOfDay);
+        static void Work
+        (
+            std::condition_variable &conditionVariable,
+            bool& isItEvning_,
+            bool& isItnight_,
+            TimeOfDay* timeOfDay
+        );
         std::condition_variable conditionVariable_;
-        std::mutex theMutex_;
         TimeOfDay* theTimePointer_ = nullptr;
         bool isItEvning_ = false;
         bool isItnight_ = false;

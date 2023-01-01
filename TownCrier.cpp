@@ -22,7 +22,7 @@ TownCrier::TownCrier(TimeOfDay* theTimePointer)
 
 
     theTimePointer_ = theTimePointer;
-    std::thread aThread(Work, std::ref(theMutex_), std::ref(conditionVariable_), std::ref(isItEvning_), std::ref(isItnight_), theTimePointer_);
+    std::thread aThread(Work, std::ref(conditionVariable_), std::ref(isItEvning_), std::ref(isItnight_), theTimePointer_);
     theThread_ = std::move(aThread);
 }
 
@@ -32,7 +32,7 @@ TownCrier::~TownCrier()
 }
 
 // void Work(std::mutex &theMutex, std::condition_variable &conditionVariable)
-void TownCrier::Work(std::mutex &theMutex, std::condition_variable &conditionVariable, bool& isItEvning, bool& isItnight, TimeOfDay* timeOfDay)
+void TownCrier::Work(std::condition_variable &conditionVariable, bool& isItEvning, bool& isItnight, TimeOfDay* timeOfDay)
 {
     std::cout << "      Town Crier: \"It is now daytime!\"" << std::endl;
 
