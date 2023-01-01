@@ -75,7 +75,7 @@ BindMixer Innkeeper::getBindMixer()
 
 void Innkeeper::removeMoneyFromTheRegister(int coins, int& totalCoins)
 {
-    std::cout << "    The register contains " << &totalCoins << " coins" << std::endl;
+    std::cout << "    The register contains " << totalCoins << " coins" << std::endl;
     if (totalCoins > coins)
     {
         std::cout << "    Removing " << coins << " coins from the register" << std::endl;
@@ -95,5 +95,5 @@ void Innkeeper::tellAssistantToGetReadyToPay(FunctionAssistant& FA)
 void Innkeeper::startCook(std::string recipe)
 {
     std::cout << "    Ordering cook to start the recipe: " << recipe << std::endl;
-    std::cout << std::endl << futureCook_.CookFood(recipe) << std::endl;
+    std::cout << futureCook_.CookFood(recipe) << std::endl;
 }

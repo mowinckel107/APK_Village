@@ -24,7 +24,7 @@ Bread* StrongBakery::BakeBread()
 	}
 	else
 	{
-		throw std::runtime_error("Insufficient ingridients");
+		throw std::runtime_error("Insufficient ingredients");
 	}
 }
 

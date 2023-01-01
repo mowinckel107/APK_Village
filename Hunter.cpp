@@ -7,7 +7,7 @@ AnimalsOfTheForest::Wolf FenrisJunior;
 
 void Hunter::goHunting(std::promise<std::string>&& huntPromise)
 {
-    std::cout << "Hunt initiated" << std::endl;
+    std::cout << "    Hunt initiated" << std::endl;
     sleep(4);
     huntPromise.set_value(Bambi.food_);
     //huntPromise.set_value(FenrisJunior.info_);

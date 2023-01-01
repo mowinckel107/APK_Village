@@ -86,7 +86,7 @@ void Tavern::variantFood()
     localFood2_local = "namse";
     undefinedSize_local = "";
 
-    std::cout << "    Size of the small variant drink" << std::get<1>(small_local) << " liters <- int" << std::endl; //henter int
+    std::cout << "    Size of the small variant drink " << std::get<1>(small_local) << " liters <- int" << std::endl; //henter int
     //std::cout << std::get<1>(mead) << std::endl;
     std::cout << "    Recipe for the mead: " << std::get<3>(mead_local) << " <- string" << std::endl; //henter string
     //std::cout << std::get<4>(mead) << std::endl;

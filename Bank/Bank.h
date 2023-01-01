@@ -21,7 +21,7 @@ public:
     template<HasMoneyAndId T>
     void customerArrives(T& customer) 
     {
-        std::cout << "Welcome to the bank customer with id: " << customer.GetId() << "! You have added " << customer.GetMoney() << " money to the bank" << std::endl;
+        std::cout << "    Welcome to the bank customer with id: " << customer.GetId() << "! You have added " << customer.GetMoney() << " money to the bank" << std::endl;
         transactions.push_back(customer.GetMoney());
 
         passbook[customer.GetId()] += customer.GetMoney();

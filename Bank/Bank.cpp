@@ -24,7 +24,7 @@ void Bank::PrintPassbook()
 {
     for (auto const &pair: passbook)
     {
-        std::cout << "id: " << pair.first << " have " << pair.second << " money in the bank" << std::endl;
+        std::cout << "    id: " << pair.first << " have " << pair.second << " money in the bank" << std::endl;
     }
     
 }

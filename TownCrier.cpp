@@ -39,14 +39,14 @@ void TownCrier::Work(std::condition_variable &conditionVariable, bool& isItEvnin
     std::this_thread::sleep_for(std::chrono::seconds(5));
 
     timeOfDay->SetTime(evning);
-    std::cout << "      Town Crier: \"It is now evning!\"" << std::endl;
+    std::cout << "      Town Crier: \"It is now evening time!\"" << std::endl;
     isItEvning = true;
     conditionVariable.notify_all(); // wake every thread waiting on the conditionVariable
 
     std::this_thread::sleep_for(std::chrono::seconds(5));
 
     timeOfDay->SetTime(night);
-    std::cout << "      Town Crier: \"It is now night!\"" << std::endl;
+    std::cout << "      Town Crier: \"It is now nighttime!\"" << std::endl;
     isItnight = true;
     conditionVariable.notify_all(); // wake every thread waiting on the conditionVariable
 

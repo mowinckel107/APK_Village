@@ -153,14 +153,14 @@ void BankTest()
 	MiddelClassPerson myMiddel = MiddelClassPerson(6, 200);
 	PoorPerson myPoor = PoorPerson(8);
 
-	std::cout << "the bank has " << myBank.getTotalMoneyInBank() << " money" << std::endl;
+	std::cout << "    The bank has " << myBank.getTotalMoneyInBank() << " money" << std::endl;
 	myBank.PrintPassbook();
 	myBank.customerArrives(myRich1);
 	myBank.customerArrives(myMiddel);
 	//myBank.customerArrives(myPoor);
 	myBank.PrintPassbook();
-	std::cout << "the bank has " << myBank.getTotalMoneyInBank() << " money" << std::endl;
-	std::cout << "smallest payment in the bank: " << myBank.getsmallestTransaction() << std::endl;
+	std::cout << "    The bank has " << myBank.getTotalMoneyInBank() << " money" << std::endl;
+	std::cout << "    Smallest payment in the bank: " << myBank.getsmallestTransaction() << std::endl;
 
 
 	myBank2.customerArrives(myRich1);

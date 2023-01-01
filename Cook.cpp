@@ -37,7 +37,7 @@ std::string Cook::CookFood(std::string recipe)
         if(resultOfHunt != "Danger")
         {
             std::cout << "    Making stew with ingredient " << resultOfHunt << " and it's gonna be delicious" << std::endl;
-            return "Meal finished";
+            return "    Meal finished";
             //Alternativt 
             //huntingThread.join(); //løsningen venter til tråden er færdig
             //futureMeat.wait; //løsningen venter evigt
@@ -48,11 +48,11 @@ std::string Cook::CookFood(std::string recipe)
         }
         else
         {
-            return "Vegetarian meal finished";
+            return "    Vegetarian meal finished";
         }
     }
     else
     {
-        return "Unknown recipe";
+        return "    Unknown recipe";
     }
 }

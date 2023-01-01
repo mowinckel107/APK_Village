@@ -11,7 +11,7 @@ struct stableBoy //Fri struct
 {
     void operator()() const
     {
-        std::cout << name_ << " the stableboy is cleaning the stables" << std::endl;
+        std::cout << "    " << name_ << " the stableboy is cleaning the stables" << std::endl;
     }
     bool operator==(stableBoy const& incoming) const
     {
@@ -24,7 +24,7 @@ struct Barmaid
 {
     void operator()() const
     {
-        std::cout << name_ << " the barmaid is clearing the tables" << std::endl;
+        std::cout << "    " << name_ << " the barmaid is clearing the tables" << std::endl;
     }
     std::string name_;
 };

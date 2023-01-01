@@ -21,5 +21,5 @@ int RichPerson::GetId()
 
 void RichPerson::Brag()
 {
-    std::cout << "I have id: " << id << " and " << money << " money" << std::endl;
+    std::cout << "    I have id: " << id << " and " << money << " money" << std::endl;
 }
