@@ -6,7 +6,7 @@
 
 #include "Smith.h"
 #include "Marketplace.h"
-#include "BakerKing.h"
+#include "Bakery/BakerKing.h"
 #include "TownCrier.h"
 #include "TimeOfDay.h"
 
