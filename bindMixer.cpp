@@ -49,10 +49,9 @@ void BindMixer::bindTasks()
     auto boundAddDrinks = boost::bind(addDrinks, boost::placeholders::_2, boost::placeholders::_1);
 
     std::cout << Inbetween(boundAddDrinks, water, beer) << " liters" << std::endl; //bind combine drinks here too
-    //    std::cout << Inbetween(boost::bind(addDrinks, boost::placeholders::_1, boost::placeholders::_2), beer, water) << std::endl; //bind combine drinks here too
+    //    std::cout << Inbetween(boost::bind(addDrinks, boost::placeholders::_1, boost::placeholders::_2), beer, water) << std::endl; //Omvendt rækkefølge
     std::cout << boundAddDrinks(beer, water) << " liters" << std::endl;
 
-    //auto boundMultiplyBeer
     //auto boundDoubleBeer = boost::bind(&DoublingBeer::operator(), boost::placeholders::_1, boost::placeholders::_2);
     boost::bind<double>(MagicMug, boost::placeholders::_1, 5)(beer);//, water);
 

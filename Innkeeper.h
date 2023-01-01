@@ -43,20 +43,23 @@ private:
     //Sådan en reducer f.eks.
 public:
     Innkeeper();
-    std::string makeFood();
-    std::string bringFood();
-    std::string bringAle(std::string);
-    std::string replaceFood(std::string);
     std::string checkMenuItem(int);
     void clean();
     void clean(std::string);
     void addAssistant();
+    template<typename Cleaner>
+    void addToCleaning(Cleaner newCleaner);
+    template<typename Cleaner>
+    void fireFromCleaning(Cleaner hiredCleaner);
+    template<typename Cleaner>
+    void tempWorker(Cleaner newCleaner);
+
     void addToCleaning(struct stableBoy newCleaner); //detect type in class - metaprogramming
     void addToCleaning(struct Barmaid newCleaner); //detect type in class
     void addToCleaning(void (*)()); //detect type in class
     void addToSpecificCleaning(bool(*)(std::string));
-    void fireFromCleaning(struct stableBoy newCleaner);
-    void tempWorker(struct stableBoy newCleaner);
+    //void fireFromCleaning(struct stableBoy newCleaner);
+
     Tavern getTavern();
     BindMixer getBindMixer();
     void removeMoneyFromTheRegister(int, int&);
@@ -64,3 +67,23 @@ public:
     void startCook(std::string);
 };
 
+template<typename Cleaner>
+void Innkeeper::fireFromCleaning(Cleaner hiredCleaner)
+{
+    std::cout << "Firing cleaner" << std::endl;
+    cleaningSignal.disconnect(hiredCleaner);
+}
+
+//template<typename Cleaner>
+//void Innkeeper::addToCleaning(Cleaner newCleaner)
+//{
+//    cleaningSignal.connect(newCleaner);
+//}
+
+template<typename Cleaner>
+void Innkeeper::tempWorker(Cleaner newCleaner)
+{
+    std::cout << "Temp cleaner hired" << std::endl;
+    boost::signals2::scoped_connection c = cleaningSignal.connect(newCleaner);
+    cleaningSignal();
+}//newCleaner is disconnected

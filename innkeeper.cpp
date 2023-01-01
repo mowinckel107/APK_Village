@@ -35,23 +35,16 @@ void Innkeeper::addToSpecificCleaning(bool newCleaner(std::string))
     superSpecificCleaningSignal.connect(newCleaner);
 }
 
-void Innkeeper::fireFromCleaning(struct stableBoy newCleaner)
-{
-    std::cout << newCleaner.name_ << " is fired from cleaning" << std::endl;
+//void Innkeeper::fireFromCleaning(struct stableBoy newCleaner)
+//{
+//    std::cout << newCleaner.name_ << " is fired from cleaning" << std::endl;
 
-    cleaningSignal.disconnect(newCleaner);
+//    cleaningSignal.disconnect(newCleaner);
 
     //Alternativt: Connect newcleaner, derefter disconnect
     //boost::signals2::connection f = cleaningSignal.connect(newCleaner);
     //f.disconnect(); //Disconnect f, som nu er en connect der indeholder newCleaner
-}
-
-void Innkeeper::tempWorker(struct stableBoy newCleaner)
-{
-    std::cout << "Temp cleaner hired" << std::endl;
-    boost::signals2::scoped_connection c = cleaningSignal.connect(newCleaner);
-    cleaningSignal();
-}//newCleaner is disconnected
+//}
 
 void Innkeeper::clean()
 {

@@ -56,20 +56,10 @@ int main(int argc, char *argv[])
 {
 	std::cout << "c++ version: " << __cplusplus << std::endl;
 
-
 	// Initialization:
 	Marketplace myMarketplace;
 	Smith mySmith(&myMarketplace);
 	BakerKing myBakerKing;
-//	Innkeeper boostInnkeeper;
-//	stableBoy John;
-//	John.name_ = "John";
-//	stableBoy Jim;
-//	Jim.name_ = "Jim";
-//	Barmaid Mary;
-//	Mary.name_ = "Mary";
-
-
 
 	bool isRunning = true;
 	while(isRunning)
@@ -79,16 +69,6 @@ int main(int argc, char *argv[])
 		std::cout << std::endl << std::endl << "What part would you like to run?" << std::endl << std::endl;
 		
 		doPrint("The Smith", "The Inn", "The Bakery", "The Towncrier", "The Marketplace", "The Bank", "Quit");
-
-		/*
-		std::cout << "	Option 1: The Smith" << std::endl;
-		std::cout << "	Option 2: The Inn" << std::endl;
-		std::cout << "	Option 3: The Bakery" << std::endl;
-		std::cout << "	Option 4: The Towncrier" << std::endl;
-		std::cout << "	Option 5: The Marketplace" << std::endl;
-		std::cout << "	Option 6: The Bank" << std::endl;
-		std::cout << "	Option 7: Quit" << std::endl;
-		*/
 
 		std::cin >> options;
 
@@ -317,40 +297,6 @@ void boostInnRun()
 			std::cout << "1 through 5 are the available options" << std::endl;
 		break;
 	}
-
-
-
-
-
-}
-void Variant()
-{
-
-}
-
-void CleaningSignals()
-{
-
-}
-
-void BindMixer()
-{
-
-}
-
-void InnMixer()
-{
-
-}
-
-void InnFunction()
-{
-
-}
-
-void FutureCookAndHunter()
-{
-
 }
 
 void MarketplaceTest()

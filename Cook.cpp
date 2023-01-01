@@ -13,11 +13,10 @@ Cook::Cook(Hunter* hunter)
 std::string Cook::CookFood(std::string recipe)
 {
     std::cout << "Preparing the meal with recipe: " << recipe << std::endl;
-    if (recipe.find(recipe.find("Venison") || recipe.find("venison"))) //Kunne godt være at en iterator ville være sejere her, men det er bare så let
+    if (recipe.find(recipe.find("Venison") || recipe.find("venison"))) //Kunne godt være at en iterator ville være sejere her, men det her er bare så let
     {
         std::promise<std::string> promiseOfMeat;
-        //Send jæger afsted, modtag et promise
-        std::future<std::string> futureMeat = promiseOfMeat.get_future(); //Måske crasher den her?
+        std::future<std::string> futureMeat = promiseOfMeat.get_future();
         std::cout << "Hunter is being sent to hunt" << std::endl;
 
         std::thread huntingThread([this](std::promise<std::string> promiseOfMeat)
@@ -32,7 +31,7 @@ std::string Cook::CookFood(std::string recipe)
         sleep(1);
 
         std::cout << "Waiting for meat ingredient" << std::endl;
-        std::string resultOfHunt = futureMeat.get(); //Anvender automatisk "wait;"" løsningen
+        std::string resultOfHunt = futureMeat.get(); //Anvender automatisk "wait;" løsningen
         huntingThread.join();
         std::cout << "Returned with " << resultOfHunt << std::endl;
         if(resultOfHunt != "Danger")

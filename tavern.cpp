@@ -3,6 +3,7 @@
 #include <boost/variant.hpp>
 #include "tavern.h"
 #include <iomanip>
+#include "math.h"
 
 
 class FoodVisitor : public boost::static_visitor<>
@@ -20,15 +21,11 @@ class FoodVisitor : public boost::static_visitor<>
     {
         std::cout << "Cup size: " << i << " liters" << std::endl;
     }
-    //void operator() (_pint i) const
-    //{
-    //    std::cout << "cup size: " << i << " pints" << std::endl;
-    //}
     void operator() (long double i) const
     {
         std::cout << "cup size: " << i << " pints" << std::endl;
     }
-    void operator() (std::string s) const //template - fully specialized template
+    void operator() (std::string s) const
     {
         if (s.empty())
             std::cout << "recipe is empty: " << std::endl;
@@ -74,35 +71,35 @@ void Tavern::variantFood()
     //Forskellen på boost::variant og std::variant er at boost::variant under exception af allokering/kreering vil allokerer heap plads.
     //std::variant må derimod være valueless som resultat
 
-    //std::variant, fordi den må kun indeholde floats
     std::variant<float, int, double, std::string, long double> small_local, medium_local, large_local, extraLarge_local, mead_local, undefinedSize_local, wine_local, localFood0_local, localFood1_local, localFood2_local;
     small_local = "one";
     small_local = 1; //Small overwritten to int
     medium_local = 1.5;
     large_local = 2;
-    extraLarge_local = 2.5F; //Stops existing at end of scope
+    extraLarge_local = 2.5F;
     mead_local = "1 part honey";
-    //std::cout << "Proleminary mead recipe: " << mead << std::endl;
-    std::string &s = std::get<std::string>(mead_local); //Stops existing at end of scope
+    std::string &s = std::get<std::string>(mead_local);
     s += ", 5 parts water";
-    //std::cout << "Final mead recipe: " << mead << std::endl;
-    wine_local = "red"; //Stops existing at end of scope
+    wine_local = "red";
     localFood0_local = 35;
     localFood1_local = -58;
     localFood2_local = "namse";
     undefinedSize_local = "";
 
-    std::cout << std::get<1>(small_local) << std::endl;
+    std::cout << std::get<1>(small_local) << std::endl; //henter int
     //std::cout << std::get<1>(mead) << std::endl;
-    std::cout << std::get<3>(mead_local) << std::endl;
+    std::cout << std::get<3>(mead_local) << std::endl; //henter string
     //std::cout << std::get<4>(mead) << std::endl;
 
     small_local = 1.1_pint; //Will fail at runtime
     //auto temporary_small_local = small_local_pint; //Will fail
     //small_local = temporary_small_local_pint; //Will fail
     //small_local = small_local_pint; //Will fail
-    auto fresh_variable = 3.6_pint; //Will fail
+    auto fresh_variable = 3.6_pint;
     std::visit(FoodVisitor(), small_local);
+    //small = small_local; //fails because long double != variant
+    small = std::get<2>(medium_local) - 0.7;
+    std::cout << "new small size: " << small << std::endl;
 
     std::visit(FoodVisitor(), mead_local);
     std::visit(FoodVisitor(), undefinedSize_local);
