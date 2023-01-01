@@ -3,7 +3,7 @@
 #include <concepts>
 #include <type_traits>
 
-//concept to check if T has memberfunction GetMoney
+//concept to check if T has memberfunction GetMoney and GetId
 template<typename T>
 concept HasMoneyAndId = requires(T t)
 {

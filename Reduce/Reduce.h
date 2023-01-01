@@ -20,6 +20,7 @@ auto reduce(P beginning, P const end)
 }
 
 
+// reduce before the addition of policies
 /*template<typename T, typename RES = ReduceTraits<T>>
 auto reduce(T const* beginning, T const* end)
 {
